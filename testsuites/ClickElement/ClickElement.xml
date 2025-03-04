@@ -3,6 +3,7 @@
 xsi:schemaLocation="https://www.steepgraph.com ../../../../resources/xsd/TestAutomationFramework.xsd">
 
 	<Wait time="2000"/>
+	<Wait time="2000"/>
   
 	  
     
