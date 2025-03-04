@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [TestPlan]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="ClickElement(failed)">
+    <parameter name="xmlFilePath" value="testsuites/ClickElement/ClickElement.xml"/>
+    <parameter name="csvFilePath" value="testsuites/ClickElement/ClickElement.csv"/>
+    <classes>
+      <class name="com.steepgraph.ta.framework.App">
+        <methods>
+          <include name="main" invocation-numbers="0"/>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+        </methods>
+      </class> <!-- com.steepgraph.ta.framework.App -->
+    </classes>
+  </test> <!-- ClickElement(failed) -->
+</suite> <!-- Failed suite [TestPlan] -->

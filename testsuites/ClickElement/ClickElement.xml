@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<TestCase xmlns="https://www.steepgraph.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="https://www.steepgraph.com ../../../../resources/xsd/TestAutomationFramework.xsd">
+
+	<Wait time="2000"/>
+  
+	  
+    
+</TestCase>
+	

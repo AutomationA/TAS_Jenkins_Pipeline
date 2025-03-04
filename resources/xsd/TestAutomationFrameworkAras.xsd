@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://www.steepgraph.com" targetNamespace="https://www.steepgraph.com" elementFormDefault="qualified">
+
+	<!-- complex type=== ComplexType (first letter to be capital for each word) 
+		Simple type === simpleType (camel case) value/enumeration === value_enumeration 
+		(all letters to be small) -->
+		
+	<xs:simpleType name="targetapplication">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="desktop" />
+			<xs:enumeration value="web" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="pipeSeparatedPattern">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^|]+([|]?[^|]+)*" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name='nonemptystr'>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="boolean">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="true" />
+			<xs:enumeration value="false" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="emptyTag" />
+	
+	<xs:complexType name='openMainWindowApp'>
+		<xs:attribute name="appName" type="nonemptystr" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name='CheckBox'>
+		<xs:attribute name="selectCheckBox" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="ClickItemViewCommandBar">
+		<xs:attribute name="commandLabel" type="pipeSeparatedPattern" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='UserMenu'>
+		<xs:attribute name="commandLabel" type="pipeSeparatedPattern" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='ClickRelationshipTab'>
+		<xs:attribute name="commandLabel" type="pipeSeparatedPattern" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name='login'>
+		<xs:attribute name="username" type="nonemptystr" use="required" />
+		<xs:attribute name="password" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='showContents'>
+		<xs:attribute name="commandLabel" type="pipeSeparatedPattern" use="required" />
+		<xs:attribute name="highlight" type="nonemptystr"/>
+		<xs:attribute name="style" type="boolean"/>
+	</xs:complexType>
+	
+	<xs:complexType name='SwitchToFrameByTitle'>
+		<xs:attribute name="title" type="pipeSeparatedPattern" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='TestCaseElements'>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+	
+	<xs:element name="CheckBox" type='CheckBox'>
+		<xs:annotation>
+			<xs:documentation><![CDATA[This tag is used to click on the check Box. 
+                      <ul>
+                          <li>selectCheckBox : (mandatory) : This attribute is mandatory and take input is text of the checkBox. At a time only one check box can be selected.</li>                
+                      </ul>]]>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:element name="ClickItemViewCommandBar" type='ClickItemViewCommandBar'>
+		<xs:annotation>
+			<xs:documentation><![CDATA[This tag is used to click the Buttons on ClickItemViewCommandBar of Form. User needs to pass the label of the button, if label is not present pass the name of the tooltip. This tag will also handle the drop down. 
+                      <ul>
+                          <li>commandLabel : (mandatory) : The commandLabel attribute takes name of the button or tooltip of button(if label is not present) or in case of drop down if command to execute is inside another command, then user need to pass parent menu/command label and child command label separated by pipe (|).</li>                
+                      </ul>]]>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:element name="ClickRelationshipTab" type='ClickRelationshipTab'>
+		<xs:annotation>
+			<xs:documentation><![CDATA[User can use ClickRelationshipTab to click buttons on relationship bar. 
+                      <ul>
+                          <li>commandLabel : (mandatory) : The commandLabel attribute takes name of the Relationship button</li>                
+                      </ul>]]>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:element name="openMainWindowApp" type='openMainWindowApp'>
+		<xs:annotation>
+			<xs:documentation><![CDATA[Open an app in main window of aras. 
+                      <ul>
+                          <li>appName : (mandatory) : The appName attribute takes name of the app to be opened in main Aras window</li>                
+                      </ul>]]>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:element name="CloseNavigationPanel" type='emptyTag'>
+		<xs:annotation>
+			<xs:documentation><![CDATA[Closes navigation Panel.]]>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+		
+	<xs:element name="Logout" type="emptyTag">
+		<xs:annotation>
+			<xs:documentation><![CDATA[Sign out the current user session of Aras.]]>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:element name="Login" type='login'>
+		<xs:annotation>
+			<xs:documentation><![CDATA[Login to ARAS by providing valid username and password.
+				<ul>
+					<li>username : (mandatory) : this attribute provides username for login into ARAS.</li>
+					<li>password : (mandatory) : this attribute provides password for login into ARAS.</li>
+				</ul>]]>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>	
+		
+	<xs:element name="OpenNavigationPanel" type='emptyTag'>
+		<xs:annotation>
+			<xs:documentation><![CDATA[Opens navigation Panel and pin it.]]>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="ShowContents" type='showContents'>
+		<xs:annotation>
+			<xs:documentation><![CDATA[User can use ShowContents to click on options inside multi level sub menus of main menu in Navigation panel. 
+                     <ul>
+                         <li>commandLabel : (mandatory) : The commandLabel attribute takes name of the options in main menu or options in sub menu from main menu,  if command to execute is inside another command, then user need to pass parent menu/command 
+                          label and child command label separated by pipe (|). At the end of this user has to pass keywords "Create" or "Search". Create will open the Item Form, and Search will open the searchGrid..</li>                
+                      	<li>highlight : (optional) : possible values are true or false, if want to highlight the action keep highlight attribute as true else false</li>
+                      	<li>style : (optional) : attribute is used to provide styling to the highlight used.</li>
+                     </ul>]]>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="SwitchToFrameByTitle" type='SwitchToFrameByTitle'>
+		<xs:annotation>
+			<xs:documentation><![CDATA[User can use UserMenu to click buttons in Usermenu. 
+                      <ul>
+                          <li>title : (mandatory) : The attribute takes the input as the tiotle of an Iframe..if user need to pass multiple Iframe title then title will be separated by pipe (|).</li>                
+                      </ul>]]>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="UserMenu" type='UserMenu'>
+		<xs:annotation>
+			<xs:documentation><![CDATA[User can use UserMenu to click buttons in Usermenu. 
+                      <ul>
+                          <li>commandLabel : (mandatory) : The commandLabel attribute takes name of the options in main menu or options in sub menu from main menu,  if command to execute is inside another command, 
+                          then user need to pass parent menu/command label and child command label separated by pipe (|).</li>                
+                      </ul>]]>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+
+
+
+
+	</xs:choice>
+		<xs:attribute name="targetApplication" type="targetapplication" />
+	</xs:complexType>
+	<xs:element name="TestCase" type='TestCaseElements' />
+</xs:schema>

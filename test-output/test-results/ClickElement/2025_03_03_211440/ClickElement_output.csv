@@ -1,0 +1,2 @@
+"password","username","Content","Execution Status","Execution Failure Reason(if any)","Notes(if any)"
+"password","username","Content","FAIL","Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.. Refer to Logs for full details.","Notes(if any)"

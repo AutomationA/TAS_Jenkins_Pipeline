@@ -1,0 +1,118 @@
+2025-03-04 12:19:59,927 [SG-TAS]  - SG-TAS Execution started.
+2025-03-04 12:19:59,929 [SG-TAS-RESULT]  - "Suite Name","Test Case Name","Test Case Id","Execution Status","Execution Time(second)","Execution Start Time","Message","Snap Shot Name",
+2025-03-04 12:19:59,929 [SG-TAS-PERFORMANCE-RESULT]  - "TimeStamp","TestID Name","Performance","Cookies","ErrorMessage(If failed)"
+2025-03-04 12:19:59,929 [SG-TAS]  - Auto Download browser driver : false
+2025-03-04 12:20:00,590 [SG-TAS]  - License is valid
+2025-03-04 12:20:00,590 [SG-TAS]  - Enovia Release is valid
+2025-03-04 12:20:00,590 [SG-TAS]  - Excecution result file header created
+2025-03-04 12:20:00,605 [SG-TAS]  - Started getSuiteId 
+2025-03-04 12:20:00,606 [SG-TAS]  - suiteId: c53da8f2-a2e8-4ae7-83ac-af47d0e1896d
+2025-03-04 12:20:00,606 [SG-TAS]  - Start of getCurrentDateTime
+2025-03-04 12:20:00,640 [SG-TAS]  - strDateTime : 04/03/2025 12:20:00 pm
+2025-03-04 12:20:00,640 [SG-TAS]  - End of getCurrentDateTime
+2025-03-04 12:20:00,641 [SG-TAS]  - recordexecution : false
+2025-03-04 12:20:00,642 [SG-TAS]  - Started startLoading
+2025-03-04 12:20:00,642 [SG-TAS]  - reRunExecution : false
+2025-03-04 12:20:00,642 [SG-TAS]  - recordexecution : false
+2025-03-04 12:20:00,642 [SG-TAS]  - End of startLoading
+2025-03-04 12:20:00,642 [SG-TAS]  - loadScriptsOnly : false
+2025-03-04 12:20:00,643 [SG-TAS]  - testingXmlFilePath testsuites\TestPlan.xml
+2025-03-04 12:20:00,643 [SG-TAS]  - Execution Server Name :QA-Run-01
+2025-03-04 12:20:00,961 [SG-TAS]  - browser : firefox
+2025-03-04 12:20:00,961 [SG-TAS]  - Environment Release : v6r2024xfd04
+2025-03-04 12:20:00,961 [SG-TAS]  - url : https://www.google.com/
+2025-03-04 12:20:00,961 [SG-TAS]  - Start of initilaize library
+2025-03-04 12:20:01,046 [SG-TAS]  - librayClass : class com.steepgraph.ta.framework.V6R2024xFD04.pages.Library
+2025-03-04 12:20:01,049 [SG-TAS]  - Library is initialized
+2025-03-04 12:20:01,049 [SG-TAS]  - Web Library is initialized
+2025-03-04 12:20:01,049 [SG-TAS]  - Aras Library is initialized
+2025-03-04 12:20:01,049 [SG-TAS]  - Master Library is initialized
+2025-03-04 12:20:01,049 [SG-TAS]  - New Libray object created for Environment version: v6r2024xfd04.
+2025-03-04 12:20:01,049 [SG-TAS]  - itagInterval : 0
+2025-03-04 12:20:01,272 [SG-TAS]  - Suite TestPlan execution started
+2025-03-04 12:20:01,272 [SG-TAS]  - Handler allocated
+2025-03-04 12:20:01,293 [SG-TAS]  - testCaseId :ClickElement
+2025-03-04 12:20:01,293 [SG-TAS]  - testCaseName :ClickElement
+2025-03-04 12:20:01,293 [SG-TAS]  - suiteName : TestPlan
+2025-03-04 12:20:01,293 [SG-TAS]  - Started  startVideoRecord
+2025-03-04 12:20:01,293 [SG-TAS]  - strEnableVideoRecord false
+2025-03-04 12:20:01,314 [SG-TAS]  - Started onTestStart
+2025-03-04 12:20:01,316 [SG-TAS]  - Processing App class.
+2025-03-04 12:20:01,316 [SG-TAS]  - strXMLFile: testsuites/ClickElement/ClickElement.xml
+2025-03-04 12:20:01,316 [SG-TAS]  - csvFilePath: testsuites/ClickElement/ClickElement.csv
+2025-03-04 12:20:01,316 [SG-TAS]  - Started allowTestCaseExecution 
+2025-03-04 12:20:01,316 [SG-TAS]  - Convert xlsxinput to csvinput
+2025-03-04 12:20:01,385 [SG-TAS]  - End of getHeaderMap headerMap{password=0, Content=2, username=1}
+2025-03-04 12:20:01,425 [SG-TAS]  - XML file parsed 
+2025-03-04 12:20:01,425 [SG-TAS]  - Target application:web
+2025-03-04 12:20:01,428 [SG-TAS]  - Driver initialization...
+2025-03-04 12:20:01,441 [SG-TAS]  - Browser util inialization...
+2025-03-04 12:20:01,441 [SG-TAS]  - Start of getDriver
+2025-03-04 12:20:01,441 [SG-TAS]  - browserName : firefox
+2025-03-04 12:20:01,442 [SG-TAS]  - Driver object null. Creating new driver object.
+2025-03-04 12:20:01,442 [SG-TAS]  - strWebDrivePath : drivers/geckodriver
+2025-03-04 12:20:01,442 [SG-TAS]  - strIsHeadLess : false
+2025-03-04 12:20:01,442 [SG-TAS]  - strRemoteDriver : true
+2025-03-04 12:20:01,442 [SG-TAS]  - privateMode : false
+2025-03-04 12:20:01,442 [SG-TAS]  - strRemoteDriver : true
+2025-03-04 12:20:01,442 [SG-TAS]  - strPlatform : LINUX
+2025-03-04 12:20:01,443 [SG-TAS]  - strNodeUrl : http://localhost:4444/wd/hub
+2025-03-04 12:20:01,447 [SG-TAS]  - marionette : false
+2025-03-04 12:20:01,447 [SG-TAS]  - enableNativeEvents : false
+2025-03-04 12:20:01,447 [SG-TAS]  - firefoxExePath : 
+2025-03-04 12:20:07,154 [SG-TAS]  - End of getDriver
+2025-03-04 12:20:07,154 [SG-TAS]  - web driver object is created
+2025-03-04 12:20:07,155 [SG-TAS]  - implicitWait : 
+2025-03-04 12:20:07,155 [SG-TAS]  - iTimeout in Millis: 30000
+2025-03-04 12:20:07,155 [SG-TAS]  - iPollingInterval in Millis: 5000
+2025-03-04 12:20:07,157 [SG-TAS]  - wait object inialization
+2025-03-04 12:20:07,157 [SG-TAS]  - Driver object of firefox obtained.
+2025-03-04 12:20:07,157 [SG-TAS]  - Started startBrowsing
+2025-03-04 12:20:07,157 [SG-TAS]  - Started verifyURLActive
+2025-03-04 12:20:08,903 [SG-TAS]  - Browser started with URL: https://www.google.com/. Window maximised.
+2025-03-04 12:20:08,903 [SG-TAS]  - End of startBrowsing
+2025-03-04 12:20:08,903 [SG-TAS]  - Browser launched.
+2025-03-04 12:20:08,904 [SG-TAS]  - End of getHeaderMap headerMap{password=0, Content=2, username=1}
+2025-03-04 12:20:08,904 [SG-TAS]  - iRetryInterval: 1
+2025-03-04 12:20:08,914 [SG-TAS]  - executionCnt: 0
+2025-03-04 12:20:08,914 [SG-TAS]  - Start of  parseCSVAttribute
+2025-03-04 12:20:08,915 [SG-TAS]  - End of  parseCSVAttribute
+2025-03-04 12:20:08,915 [SG-TAS]  - Start of  parseREGAttribute
+2025-03-04 12:20:08,915 [SG-TAS]  - Start of  parseREGToolVariables
+2025-03-04 12:20:08,915 [SG-TAS]  - End of  parseREGToolVariables
+2025-03-04 12:20:08,915 [SG-TAS]  - End of  parseREGAttribute
+2025-03-04 12:20:08,915 [SG-TAS]  - Start of  parseCSVAttribute
+2025-03-04 12:20:08,916 [SG-TAS]  - End of  parseCSVAttribute
+2025-03-04 12:20:08,916 [SG-TAS]  - Start of  parseREGAttribute
+2025-03-04 12:20:08,916 [SG-TAS]  - Start of  parseREGToolVariables
+2025-03-04 12:20:08,916 [SG-TAS]  - End of  parseREGToolVariables
+2025-03-04 12:20:08,916 [SG-TAS]  - End of  parseREGAttribute
+2025-03-04 12:20:08,916 [SG-TAS]  - ClickElement.xml::Line-> 5 => TestPlan => ClickElement => <Wait> Processing
+2025-03-04 12:20:08,916 [SG-TAS]  - attributeMap: {RELATIVE_IMAGES_PATH=D:\Ram AHIRE\DockerTAS\testsuites/ClickElement/Images, time=2000}
+2025-03-04 12:20:08,917 [SG-TAS]  - Start of wait.
+2025-03-04 12:20:10,921 [SG-TAS]  - End of wait.
+2025-03-04 12:20:10,930 [SG-TAS]  - Started onTestSuccess
+2025-03-04 12:20:10,930 [SG-TAS]  - Start of formatDate
+2025-03-04 12:20:10,931 [SG-TAS]  - strFormattedDate : 04/03/2025 12:20:01 pm
+2025-03-04 12:20:10,931 [SG-TAS]  - End of formatDate
+2025-03-04 12:20:10,931 [SG-TAS]  - Start of getCurrentDateTime
+2025-03-04 12:20:10,932 [SG-TAS]  - strDateTime : 04/03/2025 12:20:10 pm
+2025-03-04 12:20:10,932 [SG-TAS]  - End of getCurrentDateTime
+2025-03-04 12:20:10,932 [SG-TAS]  - suiteName =TestPlan
+2025-03-04 12:20:10,932 [SG-TAS]  - testCaseName =ClickElement
+2025-03-04 12:20:10,932 [SG-TAS]  - Start of recordTestCaseExecution
+2025-03-04 12:20:10,935 [SG-TAS-RESULT]  - "TestPlan","ClickElement","ClickElement","Pass","9","04/03/2025 12:20:01 pm","","",
+2025-03-04 12:20:10,935 [SG-TAS]  - recordexecution : false
+2025-03-04 12:20:10,935 [SG-TAS]  - Test case execution recorded in database
+2025-03-04 12:20:10,936 [SG-TAS]  - End of recordTestCaseExecution
+2025-03-04 12:20:10,936 [SG-TAS]  - End of onTestSuccess
+2025-03-04 12:20:10,942 [SG-TAS]  - Started  stopVideoRecord
+2025-03-04 12:20:10,942 [SG-TAS]  - End  stopVideoRecord
+2025-03-04 12:20:10,988 [SG-TAS]  - Suite TestPlan execution finished
+2025-03-04 12:20:10,988 [SG-TAS]  - Handler dellocated
+2025-03-04 12:20:11,052 [SG-TAS]  - Start of releaseResources
+2025-03-04 12:20:11,962 [SG-TAS]  - End of releaseResources
+2025-03-04 12:20:11,963 [SG-TAS]  - Start of getCurrentDateTime
+2025-03-04 12:20:11,963 [SG-TAS]  - strDateTime : 04/03/2025 12:20:11 pm
+2025-03-04 12:20:11,963 [SG-TAS]  - End of getCurrentDateTime
+2025-03-04 12:20:11,964 [SG-TAS]  - SG-TAS execution completed....!

@@ -1,0 +1,2794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://www.steepgraph.com"
+	xmlns="https://www.steepgraph.com" elementFormDefault="qualified">
+
+	<!-- complex type=== ComplexType (first letter to be capital for each word) 
+		Simple type === simpleType (camel case) value/enumeration === value_enumeration 
+		(all letters to be small) -->
+		
+	<xs:simpleType name="targetapplication">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="desktop" />
+			<xs:enumeration value="web" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="actionName">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="click" />
+			<xs:enumeration value="doubleclick" />
+			<xs:enumeration value="rightclick" />
+			<xs:enumeration value="keydown" />
+			<xs:enumeration value="keyUp" />
+			<xs:enumeration value="input" />
+			<xs:enumeration value="release" />
+			<xs:enumeration value="hover" />
+			<xs:enumeration value="clickandhold" />
+			<xs:enumeration value="mousedown" />
+			<xs:enumeration value="mouseup" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="locatorType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="id" />
+			<xs:enumeration value="name" />
+			<xs:enumeration value="cssselector" />
+			<xs:enumeration value="xpath" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="assertCondition">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="=" />
+			<xs:enumeration value="!=" />
+			<xs:enumeration value="&lt;" />
+			<xs:enumeration value="&gt;" />
+			<xs:enumeration value="&lt;=" />
+			<xs:enumeration value="&gt;=" />
+			<xs:enumeration value="contains" />
+			<xs:enumeration value="not contains" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="assertCondition1">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="=" />
+			<xs:enumeration value="!=" />
+			<xs:enumeration value="&gt;" />
+			<xs:enumeration value="&lt;" />
+			<xs:enumeration value="&gt;=" />
+			<xs:enumeration value="&lt;=" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="assertCriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="text" />
+			<xs:enumeration value="attribute" />
+			<xs:enumeration value="numberOfCharacters" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="assertCriteria1">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="text" />
+			<xs:enumeration value="attribute" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="boolean">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="true" />
+			<xs:enumeration value="false" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="inputTextMode">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="js" />
+			<xs:enumeration value="selenium" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="assertAlertActions">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="accept" />
+			<xs:enumeration value="dismiss" />
+			<xs:enumeration value="present" />
+			<xs:enumeration value="notpresent" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="assertListValuesCriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="contains" />
+			<xs:enumeration value="equal" />
+			<xs:enumeration value="not contains" />
+			<xs:enumeration value="not equal" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="criteriaCondition">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="exist" />
+			<xs:enumeration value="notexist" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="matchCondition">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="full" />
+			<xs:enumeration value="partial" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="callWebServiceCriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="contains" />
+			<xs:enumeration value="not contains" />
+			<xs:enumeration value="equal" />
+			<xs:enumeration value="not equal" />
+			<xs:enumeration value="greater than" />
+			<xs:enumeration value="less than" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="webServiceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="REST" />
+			<xs:enumeration value="SOAP" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="webServiceRequestType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="get" />
+			<xs:enumeration value="post" />
+			<xs:enumeration value="put" />
+			<xs:enumeration value="delete" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="checkelementCriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="visible" />
+			<xs:enumeration value="invisible" />
+			<xs:enumeration value="editable" />
+			<xs:enumeration value="noneditable" />
+			<xs:enumeration value="enabled" />
+			<xs:enumeration value="disabled" />
+			<xs:enumeration value="class: disabled" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="CheckIndentedTableRowCriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="editable" />
+			<xs:enumeration value="noneditable" />
+			<xs:enumeration value="visible" />
+			<xs:enumeration value="invisible" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="clickDashboardCheckboxCriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="checkAll" />
+			<xs:enumeration value="unCheckAll" />
+			<xs:enumeration value="check" />
+			<xs:enumeration value="unCheck" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="clickelementCriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="selected" />
+			<xs:enumeration value="unselected" />
+			<xs:enumeration value="invisible" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="pipeSeparatedPattern">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^|]+([|]?[^|]+)*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="target">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="tab" />
+			<xs:enumeration value="header" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="EditIndentedTableRowAction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="text" />
+			<xs:enumeration value="select" />
+			<xs:enumeration value="click" />
+			<xs:enumeration value="date" />
+			<xs:enumeration value="textwithselect" />
+			<xs:enumeration value="checkbox" />
+			<xs:enumeration value="typechooser" />
+			<xs:enumeration value="chooser" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="findelementMode">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="js" />
+			<xs:enumeration value="selenium" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="dranAndDropMode">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="js" />
+			<xs:enumeration value="selenium" />
+			<xs:enumeration value="robot" />
+			<xs:enumeration value="enterprise" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="inputFieldType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Text" />
+			<xs:enumeration value="TextChooser" />
+			<xs:enumeration value="Select" />
+			<xs:enumeration value="Object" />
+			<xs:enumeration value="Person" />
+			<xs:enumeration value="Date" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="inputFieldType2">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Person" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+
+	<xs:simpleType name="selection">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="single" />
+			<xs:enumeration value="multiple" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="criteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="On" />
+			<xs:enumeration value="On or after" />
+			<xs:enumeration value="On or before" />
+			<xs:enumeration value="Between" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="searchFormType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="global" />
+			<xs:enumeration value="full" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="rowselectioncriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="text" />
+			<xs:enumeration value="level" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="selectioncriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="text" />
+			<xs:enumeration value="level" />
+			<xs:enumeration value="hyperlinktext" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='nonemptystr'>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='nonemptyint'>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d+" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="levelPattern">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d+([,]?\d+)*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="switchtoframePattern">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^(=>)]+((=>)?[^(=>)]+)*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="datePattern">
+		<xs:restriction base="xs:string">
+			<xs:pattern
+				value="^[a-zA-Z]{3,4}\s{1}\d{1}[,]{1}\s{1}\d{4}$" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="for">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="time" />
+			<xs:enumeration value="page" />
+			<xs:enumeration value="element" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="alertActions">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="accept" />
+			<xs:enumeration value="dismiss" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='action'>
+		<xs:attribute name="name" type="actionName" use="required" />
+		<xs:attribute name="refid" type="nonemptystr" use="required" />
+		<xs:attribute name="value" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='assertTag'>
+		<xs:attribute name="locatorType" type="locatorType" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" />
+		<xs:attribute name="condition" type="assertCondition" use="required" />
+		<xs:attribute name="criteria" type="assertCriteria" use="required" />
+		<xs:attribute name="attribute" type="nonemptystr" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="refid" type="nonemptystr" />
+		<xs:attribute name="errormessage" type="nonemptystr" />
+		<xs:attribute name="highlight" type="boolean" />
+		<xs:attribute name="style" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='assertAlert'>
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="action" type="assertAlertActions" use="required" />
+		<xs:attribute name="errormessage" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='assertDeletion'>
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="errormessage" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='assertFileExists'>
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='assertIndentedTableRow'>
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="refid" type="nonemptystr" use="required" />
+		<xs:attribute name="condition" type="assertCondition" use="required" />
+		<xs:attribute name="criteria" type="assertCriteria" use="required" />
+		<xs:attribute name="attribute" type="nonemptystr" />
+		<xs:attribute name="position" type="nonemptystr" use="required" />
+		<xs:attribute name="errormessage" type="nonemptystr" />
+		<xs:attribute name="insideFreezePane" type="boolean" />
+		<xs:attribute name="highlight" type="boolean" />
+		<xs:attribute name="style" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='assertListValues'>
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="criteria" type="assertListValuesCriteria" use="required" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="errormessage" type="nonemptystr" />
+		<xs:attribute name="highlight" type="boolean" />
+		<xs:attribute name="style" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='assertOutlookMailHeader'>
+		<xs:attribute name="subject" type="nonemptystr" />
+		<xs:attribute name="validateMailHeader" type="nonemptystr" />
+		<xs:attribute name="validateMsgString" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='assertPageLoadTime'>
+		<xs:attribute name="condition" type="assertCondition1" use="required" />
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="input" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='assertXMl'>
+		<xs:attribute name="refid" type="nonemptystr" use="required" />
+		<xs:attribute name="criteria" type="criteriaCondition" />
+		<xs:attribute name="xpathExpression" type="nonemptystr" />
+		<xs:attribute name="match" type="matchCondition" use="required" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="regexExpr" type="boolean" />
+		<xs:attribute name="deleteFile" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='callWebService'>
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="refid" type="nonemptystr" />
+		<xs:attribute name="url" type="nonemptystr" use="required" />
+		<xs:attribute name="type" type="webServiceType" use="required" />
+		<xs:attribute name="key" type="nonemptystr" use="required" />
+		<xs:attribute name="username" type="nonemptystr" />
+		<xs:attribute name="password" type="nonemptystr" />
+		<xs:attribute name="basicAuth" type="nonemptystr" />
+		<xs:attribute name="comparewith" type="nonemptystr" use="required" />
+		<xs:attribute name="method" type="webServiceRequestType" use="required" />
+		<xs:attribute name="criteria" type="callWebServiceCriteria" use="required" />
+		<xs:attribute name="soapaction" type="nonemptystr" />
+		<xs:attribute name="errormessage" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='checkelement'>
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="criteria" type="checkelementCriteria" use="required" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='CheckIndentedTableRow'>
+		<xs:attribute name="position" type="nonemptyint" use="required" />
+		<xs:attribute name="criteria" type="CheckIndentedTableRowCriteria" use="required" />
+		<xs:attribute name="columnlabel" type="nonemptystr" use="required" />
+		<xs:attribute name="refid" type="nonemptystr" use="required" />
+		<xs:attribute name="insideFreezePane" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='categorycommand'>
+		<xs:attribute name="title" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='clickDashboardCheckbox'>
+		<xs:attribute name="action" type="clickDashboardCheckboxCriteria" use="required" />
+		<xs:attribute name="rows" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='ClickElement'>
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="highlight" type="boolean" />
+		<xs:attribute name="style" type="nonemptystr" />
+		<xs:attribute name="mode" type="inputTextMode" />
+		<xs:attribute name="async" type="boolean" />
+		<xs:attribute name="criteria" type="clickelementCriteria" />
+		<xs:attribute name="retryCount" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='emptyTag' />
+
+	<xs:complexType name='GlobalActionsMenu'>
+		<xs:attribute name="commandLabel" type="pipeSeparatedPattern" use="required" />
+		<xs:attribute name="highlight" type="boolean" />
+		<xs:attribute name="style" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='portalCommand'>
+		<xs:attribute name="title" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='clickWindowElement'>
+		<xs:attribute name="imagepath" type="nonemptystr" use="required" />
+		<xs:attribute name="skipError" type="boolean" />
+		<xs:attribute name="refid" type="nonemptystr" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='closeAllOtherWindow'>
+		<xs:attribute name="dismissAlert" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='createDashboard'>
+		<xs:attribute name="input" type="nonemptystr" use="required" />
+		<xs:attribute name="delete" type="boolean" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='deactive6wSearch'>
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='ClickRefreshButton'>
+		<xs:attribute name="target" type="target" />
+	</xs:complexType>
+
+	<xs:complexType name='DownloadFile'>
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='DownloadFileUsingCommand'>
+		<xs:attribute name="commandlabel" type="nonemptystr" use="required" />
+		<xs:attribute name="wait" type="nonemptystr" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="checkDownloadFile" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='DownloadFileUsingIcon'>
+		<xs:attribute name="position" type="nonemptystr" use="required" />
+		<xs:attribute name="refid" type="nonemptystr" use="required" />
+		<xs:attribute name="wait" type="nonemptystr" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="checkDownloadFile" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='DragAndDrop'>
+		<xs:attribute name="locatorType" type="locatorType" />
+		<xs:attribute name="sourceLocatorExpression" type="nonemptystr" />
+		<xs:attribute name="targetLocatorExpression" type="nonemptystr"  />
+		<xs:attribute name="mode" type="dranAndDropMode" />
+		<xs:attribute name="sourceOffsetX" type="nonemptyint" />
+		<xs:attribute name="sourceOffsetY" type="nonemptyint" />
+		<xs:attribute name="targetOffsetX" type="nonemptyint" />
+		<xs:attribute name="targetOffsetY" type="nonemptyint" />
+		<xs:attribute name="sourceFrameRefId" type="nonemptystr" />
+		<xs:attribute name="targetFrameRefId" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='EditIndentedTableRow'>
+		<xs:attribute name="position" type="nonemptyint" use="required" />
+		<xs:attribute name="action" type="EditIndentedTableRowAction" use="required" />
+		<xs:attribute name="refid" type="nonemptystr" use="required" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="insideFreezePane" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='if'>
+		<xs:attribute name="locatorType" type="locatorType" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" />
+		<xs:attribute name="condition" type="nonemptystr" />
+		<xs:attribute name="refid" type="nonemptystr" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="criteria" type="nonemptystr" use="required" />
+		<xs:attribute name="attribute" type="nonemptystr" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='execute'>
+		<xs:attribute name="class" type="nonemptystr" use="required" />
+		<xs:attribute name="method" type="nonemptystr" use="required" />
+		<xs:attribute name="id" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='locatorCSV'>
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='findelement'>
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="mode" type="findelementMode" />
+	</xs:complexType>
+
+	<xs:complexType name='getValueFromCookies'>
+		<xs:attribute name="cookieName" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='globalsearch'>
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="type" type="xs:string" />
+		<xs:attribute name="searchtype" type="xs:string" />
+		<xs:attribute name="highlight" type="boolean" />
+		<xs:attribute name="input" type="xs:string" />
+		<xs:attribute name="style" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='alert'>
+		<xs:attribute name="action" type="alertActions" use="required" />
+		<xs:attribute name="optional" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='highLightElement'>
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="style" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='include'>
+		<xs:attribute name="filepath" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='inputText'>
+		<xs:attribute name="locatorType" type="locatorType" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" />
+		<xs:attribute name="refid" type="nonemptystr" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="highlight" type="boolean" />
+		<xs:attribute name="style" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="mode" type="inputTextMode" />
+		<xs:attribute name="encrypted" type="boolean" />
+		<xs:attribute name="newLine" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='inputWindowElement'>
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="imagepath" type="nonemptystr" use="required" />
+		<xs:attribute name="skipError" type="boolean" />
+		<xs:attribute name="refid" type="nonemptystr" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='lifecycle'>
+		<xs:attribute name="action" type="actiontype" use="required" />
+		<xs:attribute name="validateTargetState" type="validateTargetStatevalue" />
+	</xs:complexType>
+
+	<xs:complexType name='login'>
+		<xs:attribute name="username" type="nonemptystr" use="required" />
+		<xs:attribute name="password" type="nonemptystr" use="required" />
+		<xs:attribute name="closeWelcome" type="boolean"/>
+		<xs:attribute name="location" type="nonemptystr" />
+		<xs:attribute name="role" type="nonemptystr" />
+		<xs:attribute name="organization" type="nonemptystr" />
+		<xs:attribute name="project" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='logout'>
+		<xs:attribute name="preCheck" type="nonemptystr" />
+		<xs:attribute name="wait" type="nonemptystr" />
+		<xs:attribute name="isDashboard" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='MaximizeAndMinimize'>
+		<xs:attribute name="maximizeminimizeWidget" type="boolean" />
+		<xs:attribute name="appname" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='mqlAssert'>
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="condition" type="mqlCondition" use="required" />
+		<xs:attribute name="selectExpression" type="nonemptystr" />
+		<xs:attribute name="errormessage" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='openActionToolbarMenu'>
+		<xs:attribute name="commandlabel" type="nonemptystr" use="required" />
+		<xs:attribute name="targetwindow" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='openChooser'>
+		<xs:attribute name="fieldlabel" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='CompassApp'>
+		<xs:attribute name="quadrant" type="quadrantList" />
+		<xs:attribute name="appname" type="nonemptystr" use="required" />
+		<xs:attribute name="appIndex" type="nonemptystr" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='openNewToolbarInDashboard'>
+		<xs:attribute name="toolbarName" type="nonemptystr" use="required" />
+		<xs:attribute name="actionmenu" type="nonemptystr" use="required" />
+		<xs:attribute name="dropdownOption" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='opensearchresult'>
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="criteria" type="searchselectioncriteria" />
+		<xs:attribute name="column" type="columnValue" />
+		<xs:attribute name="value" type="nonemptystr" />
+		<xs:attribute name="openWith" type="nonemptystr" />
+		<xs:attribute name="customizedResult" type="boolean" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='openURL'>
+		<xs:attribute name="url" type="nonemptystr" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="target" type="openURLTarget" />
+	</xs:complexType>
+
+	<xs:complexType name='option'>
+		<xs:attribute name="selectBoxName" type="nonemptystr" />
+		<xs:attribute name="selectBoxId" type="nonemptystr" />
+		<xs:attribute name="selectList" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='validateTableExport'>
+		<xs:attribute name="headerList" type="nonemptystr" use="required" />
+		<xs:attribute name="skipCount" type="nonemptystr" use="required" />
+		<xs:attribute name="time" type="nonemptystr" />
+		<xs:attribute name="skipError" type="boolean" />
+		<xs:attribute name="filePath" type="nonemptystr" />
+		<xs:attribute name="refIdForTool" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='outlookLogin'>
+		<xs:attribute name="username" type="nonemptystr" use="required" />
+		<xs:attribute name="password" type="nonemptystr" use="required" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='outlookLogout'>
+		<xs:attribute name="username" type="nonemptystr" use="required" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='searchOutlookMail'>
+		<xs:attribute name="searchText" type="nonemptystr" use="required" />
+		<xs:attribute name="searchMailId" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='pinWidgetToDashboard'>
+		<xs:attribute name="pinBtnInWidget" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='print'>
+		<xs:attribute name="message" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='registerobject'>
+		<xs:attribute name="locatorType" type="locatorType" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="attribute" type="nonemptystr" />
+		<xs:attribute name="removeSpace" type="boolean" />
+		<xs:attribute name="suffix" type="nonemptystr" />
+		<xs:attribute name="prefix" type="nonemptystr" />
+		<xs:attribute name="length" type="nonemptystr" />
+		<xs:attribute name="numeric" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='readXML'>
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="unziplocation" type="nonemptystr" use="required" />
+		<xs:attribute name="unzip" type="boolean" use="required" />
+		<xs:attribute name="fromBrowserDownloadLocation" type="boolean" use="required" />
+		<xs:attribute name="downloadFileExt" type="nonemptystr" use="required" />
+		<xs:attribute name="regexExpr" type="nonemptystr" />
+		<xs:attribute name="deleteFile" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='RunMQL'>
+	    <xs:attribute name="input" type="nonemptystr" />
+	    <xs:attribute name="id" type="nonemptystr" />
+	    <xs:attribute name="result" type="nonemptystr" />
+	    <xs:attribute name="condition" type="runMQLCondition" use="required" />
+	    <xs:attribute name="errormessage" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='selectContextMenuOption'>
+		<xs:attribute name="refid" type="nonemptystr" use="required" />
+		<xs:attribute name="menuOption" type="nonemptyint" />
+	</xs:complexType>
+
+	<xs:simpleType name="ingiter">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='ScrollToElement'>
+		<xs:attribute name="locatorType" type="nonemptystr" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="CountForVertical" type="nonemptystr" />
+		<xs:attribute name="CountForHorizontal" type="nonemptystr" />
+		<xs:attribute name="scrollArea" type="nonemptystr" />
+		<xs:attribute name="direction" type="directionType" />
+		<xs:attribute name="click" type="clickType" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:simpleType name="directionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="up" />
+			<xs:enumeration value="down" />
+			<xs:enumeration value="right" />
+			<xs:enumeration value="left" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="clickType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="right" />
+			<xs:enumeration value="left" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="fileExt">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="xlsx" />
+			<xs:enumeration value="xls" />
+			<xs:enumeration value="csv" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='selectDate'>
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="selecttag" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='selectandsubmit6wtagssearch'>
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="selection" type="selection" use="required" />
+		<xs:attribute name="submitLabel" type="nonemptystr" use="required" />
+		<xs:attribute name="columnName" type="nonemptystr" />
+		<xs:attribute name="columnValue" type="nonemptystr" />
+		<xs:attribute name="wait" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='stopPerformanceLogs'>
+		<xs:attribute name="startRequest" type="nonemptystr" />
+		<xs:attribute name="stopRequest" type="nonemptystr" />
+		<xs:attribute name="requestOccurence" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='SelectSecurityContext'>
+		<xs:attribute name="organization" type="nonemptystr" use="required" />
+		<xs:attribute name="collaborativeSpace" type="nonemptystr" use="required" />
+		<xs:attribute name="role" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='selectColor'>
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="color" type="nonemptystr" use="required" />
+		<xs:attribute name="highlight" type="boolean" />
+		<xs:attribute name="style" type="nonemptystr" />
+
+	</xs:complexType>
+
+	<xs:complexType name='wait'>
+		<xs:attribute name="time" type="nonemptyint" use="required" />
+		<xs:attribute name="for" type="for" />
+		<xs:attribute name="locatorType" type="locatorType" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" />
+		<xs:attribute name="afterTime" type="waitActions" />
+	</xs:complexType>
+
+	<xs:complexType name='SwitchToWindow'>
+		<xs:attribute name="title" type="nonemptystr" />
+		<xs:attribute name="last" type="boolean" />
+		<xs:attribute name="onLoadCompletion" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='switchtoframe'>
+		<xs:attribute name="name" type="switchtoframePattern" />		
+		<xs:attribute name="refid" type="nonemptystr" />
+		<xs:attribute name="index" type="nonemptyint" />
+		<xs:attribute name="locatorType" type="locatorType" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" />
+		<xs:attribute name="removeSpace" type="boolean" />
+	</xs:complexType>
+
+	<xs:complexType name='selectindentedtablerow'>
+		<xs:attribute name="expand" type="boolean" />
+		<xs:attribute name="criteria" type="selectioncriteria" use="required" />
+		<xs:attribute name="selectcheckbox" type="boolean" />
+		<xs:attribute name="isnew" type="boolean" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="section" type="tablesection" />
+		<xs:attribute name="dialog" type="boolean" />
+		<xs:attribute name="linkValue" type="boolean" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='step'>
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="title" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='sendKeys'>
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="key" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='validateTableHeader'>
+		<xs:attribute name="headerList" type="nonemptystr" use="required" />
+		<xs:attribute name="downloadFileExt" type="fileExt" />
+		<xs:attribute name="skipCount" type="nonemptystr" />
+		<xs:attribute name="filePath" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='selectoropennewindentedtablerow'>
+		<xs:attribute name="criteria" type="newindentedtablerowcriteria" use="required" />
+		<xs:attribute name="searchByIdentifier" type="boolean" />
+		<xs:attribute name="id" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='selectWindowRegion'>
+		<xs:attribute name="imagepath" type="nonemptystr" use="required" />
+		<xs:attribute name="skipError" type="boolean" use="required" />
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='validateBegin'>
+		<xs:attribute name="filePath" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='validateBehaviour'>
+		<xs:attribute name="row" type="nonemptystr" use="required" />
+		<xs:attribute name="col" type="nonemptystr" use="required" />
+		<xs:attribute name="sheet" type="nonemptystr" use="required" />
+		<xs:attribute name="data" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='showNotification'>
+		<xs:attribute name="message" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='uploadFileUsingLocator'>
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="path" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='uploadFileForDashboard'>
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+		<xs:attribute name="path" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='draganddropfile'>
+		<xs:attribute name="path" type="nonemptystr" use="required" />
+		<xs:attribute name="locatorType" type="locatorType" use="required" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:simpleType name="quadrantList">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="north" />
+			<xs:enumeration value="east" />
+			<xs:enumeration value="west" />
+			<xs:enumeration value="south" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="waitActions">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="pass" />
+			<xs:enumeration value="fail" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="columnValue">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Manufacturer ASGID" />
+			<xs:enumeration value="Manufacturer ID" />
+			<xs:enumeration value="Title" />
+			<xs:enumeration value="Type" />
+			<xs:enumeration value="Description" />
+			<xs:enumeration value="Name" />
+			<xs:enumeration value="Revision" />
+			<xs:enumeration value="Owner" />
+			<xs:enumeration value="Creation Date" />
+			<xs:enumeration value="Modification Date" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="searchselectioncriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="text" />
+			<xs:enumeration value="row-number" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="newindentedtablerowcriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="select" />
+			<xs:enumeration value="open" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="tablesection">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="table" />
+			<xs:enumeration value="freezepan" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="validateTargetStatevalue">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="true" />
+			<xs:enumeration value="null" />
+			<xs:enumeration value="false" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="actiontype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="promote" />
+			<xs:enumeration value="demote" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="targetwindowtype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="popup" />
+			<xs:enumeration value="content" />
+			<xs:enumeration value="slidein" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="mqlCondition">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="validatetnr" />
+			<xs:enumeration value="validateid" />
+			<xs:enumeration value="validatetstatefromid" />
+			<xs:enumeration value="validatetstatefromtnr" />
+			<xs:enumeration value="validatetattributefromtnr" />
+			<xs:enumeration value="validatetattributefromid" />
+			<xs:enumeration value="validatetdeletionfromid" />
+			<xs:enumeration value="validatetdeletionfromtnr" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="assertDateCriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="=" />
+			<xs:enumeration value="!=" />
+			<xs:enumeration value="&lt;" />
+			<xs:enumeration value="&gt;" />
+			<xs:enumeration value="&lt;=" />
+			<xs:enumeration value="&gt;=" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="assertDateToCompare">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="mins" />
+			<xs:enumeration value="hours" />
+			<xs:enumeration value="days" />
+			<xs:enumeration value="months" />
+			<xs:enumeration value="years" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="key">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CANCEL" />
+			<xs:enumeration value="HELP" />
+			<xs:enumeration value="BACK_SPACE" />
+			<xs:enumeration value="TAB" />
+			<xs:enumeration value="CLEAR" />
+			<xs:enumeration value="RETURN" />
+			<xs:enumeration value="ENTER" />
+			<xs:enumeration value="SHIFT" />
+			<xs:enumeration value="LEFT_SHIFT" />
+			<xs:enumeration value="CONTROL" />
+			<xs:enumeration value="LEFT_CONTROL" />
+			<xs:enumeration value="ALT" />
+			<xs:enumeration value="LEFT_ALT" />
+			<xs:enumeration value="PAUSE" />
+			<xs:enumeration value="ESCAPE" />
+			<xs:enumeration value="SPACE" />
+			<xs:enumeration value="PAGE_UP" />
+			<xs:enumeration value="PAGE_DOWN" />
+			<xs:enumeration value="END" />
+			<xs:enumeration value="HOME" />
+			<xs:enumeration value="LEFT" />
+			<xs:enumeration value="ARROW_LEFT" />
+			<xs:enumeration value="UP" />
+			<xs:enumeration value="ARROW_UP" />
+			<xs:enumeration value="RIGHT" />
+			<xs:enumeration value="ARROW_RIGHT" />
+			<xs:enumeration value="DOWN" />
+			<xs:enumeration value="ARROW_DOWN" />
+			<xs:enumeration value="INSERT" />
+			<xs:enumeration value="DELETE" />
+			<xs:enumeration value="SEMICOLON" />
+			<xs:enumeration value="EQUALS" />
+			<xs:enumeration value="NUMPAD0" />
+			<xs:enumeration value="NUMPAD1" />
+			<xs:enumeration value="NUMPAD2" />
+			<xs:enumeration value="NUMPAD3" />
+			<xs:enumeration value="NUMPAD4" />
+			<xs:enumeration value="NUMPAD5" />
+			<xs:enumeration value="NUMPAD6" />
+			<xs:enumeration value="NUMPAD7" />
+			<xs:enumeration value="NUMPAD8" />
+			<xs:enumeration value="NUMPAD9" />
+			<xs:enumeration value="MULTIPLY" />
+			<xs:enumeration value="ADD" />
+			<xs:enumeration value="SEPARATOR" />
+			<xs:enumeration value="SUBTRACT" />
+			<xs:enumeration value="DECIMAL" />
+			<xs:enumeration value="DIVIDE" />
+			<xs:enumeration value="F1" />
+			<xs:enumeration value="F2" />
+			<xs:enumeration value="F3" />
+			<xs:enumeration value="F4" />
+			<xs:enumeration value="F5" />
+			<xs:enumeration value="F6" />
+			<xs:enumeration value="F7" />
+			<xs:enumeration value="F8" />
+			<xs:enumeration value="F9" />
+			<xs:enumeration value="F10" />
+			<xs:enumeration value="F11" />
+			<xs:enumeration value="F12" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="keyboth">
+		<xs:union memberTypes="key">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="^.+$" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+
+	<xs:simpleType name="openURLTarget">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="self" />
+			<xs:enumeration value="tab" />
+			<xs:enumeration value="window" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="runMQLCondition">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="none" />
+			<xs:enumeration value="=" />
+			<xs:enumeration value="!=" />
+			<xs:enumeration value="&lt;" />
+			<xs:enumeration value="&gt;" />
+			<xs:enumeration value="&lt;=" />
+			<xs:enumeration value="=&gt;" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='deleteCurrentTabInDashboard'>
+		<xs:attribute name="wait" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name="filterSearchPerson">
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="fieldlabel" type="nonemptystr" use="required" />
+		<xs:attribute name="selectionType" type="selectType" use="required" />
+		<xs:attribute name="row" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:simpleType name="selectType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="row-number" />
+			<xs:enumeration value="text" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="filterSearchSelection">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="single" />
+			<xs:enumeration value="multiple" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="criteriaType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="on" />
+			<xs:enumeration value="on or after" />
+			<xs:enumeration value="on or before" />
+			<xs:enumeration value="between" />
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:complexType name="filterSearchForm">
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="fieldlabel" type="nonemptystr" use="required" />
+		<xs:attribute name="inputfieldtype" type="nonemptystr" use="required" />
+		<xs:attribute name="selection" type="filterSearchSelection" />
+		<xs:attribute name="row" type="nonemptystr" />
+		<xs:attribute name="criteria" type="criteriaType" />
+	</xs:complexType>
+
+	<xs:complexType name="selectAndSubmit">
+		<xs:attribute name="selection" type="nonemptystr" use="required" />
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="submitLabel" type="nonemptystr" use="required" />
+		<xs:attribute name="criteria" type="selectType" />
+	</xs:complexType>
+
+	<xs:complexType name='assertDate'>
+		<xs:attribute name="toCompare" type="assertDateToCompare" use="required" />
+		<xs:attribute name="criteria" type="assertDateCriteria" use="required" />
+		<xs:attribute name="dateDifference" type="nonemptystr" use="required" />
+		<xs:attribute name="id" type="nonemptystr" />
+		<xs:attribute name="input" type="nonemptystr" />
+		<xs:attribute name="date2Id" type="nonemptystr" />
+		<xs:attribute name="date2Input" type="nonemptystr" />
+		<xs:attribute name="locatorType" type="locatorType" />
+		<xs:attribute name="locatorExpression" type="nonemptystr" />
+		<xs:attribute name="date2LocatorType" type="locatorType" />
+		<xs:attribute name="date2LocatorExpression" type="nonemptystr" />
+		<xs:attribute name="dateFormat" type="nonemptystr" />
+		<xs:attribute name="date2Format" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='TestCaseElements'>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+
+			<xs:element name="Action" type='action'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Perform a given action on element. Element should be located using FindElement first. 
+						<ul>
+							<li>refid : (mandatory) : id of FindElement tag will used as refid for this tag.</li>
+							<li>name : (mandatory) : defines the action to be perform on given web element. Possible values are
+								- click : Click on element
+								- doubleclick : Double click on element
+								- rightclick : Right click on element
+								- keydown : Performs a modifier key press. Does not release the modifier key implicitly - either keyUp(theKey) or sendKeys(Keys.NULL)must be called to release the modifier.
+											modifier_key - any of the modifier keys (ALT, SHIFT, or CONTROL)
+								- keyUp :  Performs a modifier key release.
+										   modifier_key - any of the modifier keys (ALT, SHIFT, or CONTROL)
+								- release : Releases the depressed left mouse button, in the middle of the given element
+								- clickandhold: Clicks (without releasing) at the current mouse location.
+								- hover:this attribute is used when user want to hover on certain element.
+								- input:this attribute is used when user want to input some value.
+								- mouseDown : this attribute is used when user want to do mouse down action with findElement.(It's alternative of DragAndDrop tag)
+								- mouseup :  this attribute is used when user wants to do mouse up action with findElement.(It's alternative of DragAndDrop tag)
+							</li>
+							<li>value : (optional) : this attribute is used when user chose input ,keyup , keydown as name attribute , then this attribute is mandatory.Possible values are modifier_key for keyup and keydown. </li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Assert" type='assertTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[User can use assert for validation. The Assertion results are based on the comparison of Actual & Expected Results. use either id or input attribute for this tag
+						<ul>
+							<li>locatorType : (mandatory when refid is not used) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory when refid is not used) : This attribute contains expression specific to locator type.</li>
+							<li>id : (optional if input used) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>criteria : (mandatory) : possible values are 'text', 'numberOfCharacters' and 'attribute', On which criteria user wants to perform assertion needs to give in this.</li>
+							<li>condition : (mandatory) :There are 8 types of condition: =, !=, &lt;, &gt;, &lt;=, &gt;=, contains, not contains</li>
+							<li>refid : (optional) : id attribute of FindElement tag will used as refid for this tag.</li>
+							<li>errormessage  : (optional) : user can give hardcoded message in this attibute.</li>
+							<li>highlight : (optional) : attribute used is choose whether to highlight the element when working on it. Takes values true or false.</li>
+							<li>style : (optional) : attribute is used to provide styling to the highlight used.</li>
+							<li>input : (optional if id used) : attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.</li>
+							<li>attribute:(optional):This attribute contains expression specific to locator type. If we put criteria = attribute , then we have to put the attribute value accordingly,
+													 like we have to put that attribute whose value we want to assert.
+													 use dropdown as attribute value if the asserted value is in selectDropdown tag of that html & also contain dissabled field in the dom </li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="AssertAlert" type='assertAlert'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[User can use AssertAlert for validate the alert messages.
+						<ul>
+							<li>id : (optional if action is 'present' or 'notpresent') : Id attribute is csv column identifier, It is only mandatory in case action attribute value is either 'accept' or 'dismiss'.</li>
+							<li>action : (mandatory) : possible values are accept or dismiss or present or notpresent. 'accept' to accept the alert message and 'dismiss' to dismiss the error message. 'present' and  'notpresent' to check alert if present of not.</li>
+							<li>errormessage : (optional) : user can give hardcoded message in this attibute.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="AssertDeletion" type='assertDeletion'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Assertdeletion tag is used for verifying whether object is removed or deleted from UI.
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>errormessage  : (optional) : user can give hardcoded message in this attibute.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="AssertFileExists"
+				type="assertFileExists">
+				<xs:annotation>
+					<xs:documentation><![CDATA[Assert whether file exists on given location
+						<ul>
+							<li>input : (optional if id used) : attribute is used to provide a hard-coded value of filepath for input instead of using id attribute from csv file.</li>
+							<li>id : (optional if input used) : id(CSV) attribute is csv column identifier,in csv file location is passed</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait will be based on the time it takes to download the whole file.</li>
+						<ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="AssertIndentedTableRow" type='assertIndentedTableRow'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[AssertIndentedTableRow tag is used for verifying text and attributes of intended table.
+						<ul>
+							<li>id : (mandatory) : id (CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>refid : (mandatory) : id attribute of SelectIndentedTableRow tag is the refid of this tag. So, using this refid script will identify the row to be edited.</li>
+							<li>position : (mandatory) : It identifies the column number of the row selected using SelectIndentedTableRow tag to be edited.</li>
+							<li>criteria : (mandatory) : possible values are 'hyperlinktext' , 'text' and 'attribute', On which criteria user wants to perform assertion needs to give in this.</li>
+							<li>condition : (mandatory) : There are eight conditions user can apply for assertion tag which are as follow: contains , not contains, Equals to, Not equals to, Greater than, Less than, Greater than equals to, Less than equals to. for reference check condition of assert tag. </li>
+							<li>attribute : (optional) : it specifies the attribute available on web elements to be assert.E.g.- name, value, class, rmbIdm, rmbrow etc....</li>
+							<li>highlight : (optional) : attribute used is choose whether to highlight the element when working on it. Takes values true or false.</li>
+							<li>style : (optional) : attribute is used to provide styling to the highlight used.</li>
+							<li>errormessage : (optional) : user can give hardcoded message in this attibute.</li>
+							<li>insideFreezePane : (optional) : possible values are 'true' or 'false'.If citieria is true it will check inside the freeze panel.</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 3000MS.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="AssertListValues" type='assertListValues'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[User can use AssertListValues for validate the values of list box, use either id or input attribute for this tag
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>id  : (optional if input used) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>criteria : (mandatory) : possible values are  equal, not equal, contains, and not contains, On which criteria user wants to perform assertion needs to give in this.</li>
+							<li>input : (optional if id used) : attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.</li>
+							<li>errormessage  : (optional) : user can give hardcoded message in this attibute.</li>
+							<li>highlight : (optional) : attribute used is choose whether to highlight the element when working on it. Takes values true or false.</li>
+							<li>style : (optional) : attribute is used to provide styling to the highlight used.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="AssertOutlookMailHeader" type="assertOutlookMailHeader">
+				<xs:annotation>
+					<xs:documentation><![CDATA[AssertOutlookMailHeader tag is used to validate from emailId, To emailId, Cc emailId and subject.
+						<ul>
+							<li>validateMailHeader : (optional) : this attribute from is used to validated from id, cc, to.</li>
+							<li>subject : (optional) : this attribute subject is used to validated subject in outlook.</li>
+							<li>validateMsgString : (optional) : this attribute validateMsgString is used to validated msg body with pipe seprated string.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="AssertPageLoadTime" type='assertPageLoadTime'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This is used to validate current page/window/frame load time.
+						<ul>
+							<li>condition : (mandatory) : There are 6 types of condition: "=", "!=", "&lt;",  "&gt;", "&lt;=",  "&gt;=" </li>
+							<li>id : (mandatory) : id(CSV) attribute is used to unique identification. it will help for multiple assert operations.</li>
+							<li>input : (mandatory) : This attribute specifies the value in milliseconds against which condition will be evaluated.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="AssertXML" type="assertXMl">
+				<xs:annotation>
+					<xs:documentation><![CDATA[Include another test case xml in current xml.
+						<ul>
+							<li>refid  : (mandatory) : value is same as id key for XML extracted file, id attribute of ReadXML tag is used as refid for AssertXML tag.</li>
+							<li>id : (Optional when input is used) : id/input attibute is mandatory [match = "Full"] when user have to compare two file. User have to provide the filepath which they want to compare in csv file.</li>
+							<li>input : (Optional when id is used) : input/Id attibute is mandatory when [match = "Full"]. User have to provide the Hard coded filepath in xml file  which they want to compare two file.</li>
+							<li>criteria  : (Optional) : This attribute is used when match is partial, possible values are exist / notexist.Default value is exist.</li>
+							<li>match  : (mandatory) : Either match is full or partial depending on validation of XML.</li>
+							<li>xpathExpression: (Optional)  : xpathExperssion is mandatory when [match = "partial"] Provide xpath for which value must be retrieve.</li>
+							<li>regexExpr : (Optional): Provide regexExpr only when xml file contains regular expression.Possible values are true and false. Default value is false.</li>
+							<li>deleteFile: (Optional) : Possible values are true and false,Default value is false.True and false value for delete and undelete zip and xml file respectively. This attribute is only applicable when match is full.</li>
+						</ul> ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="CallWebService" type="callWebService">
+				<xs:annotation>
+					<xs:documentation><![CDATA[Call web service and validate response.
+						<ul>
+							<li>id : (mandatory) : Reference for storing response of webservice</li>
+							<li>Method : (mandatory) : There are four methods for CallWebService Get,Post,Delete,Put.</li>
+							<li>url : (mandatory) : Url of webservice</li>
+							<li>type : (mandatory) : There two types of services SOAP,REST.</li>
+							<li>criteria : (mandatory) : There are five conditions apply for webservices Contains, Equals to, Not equals to, Greater thana and Less Than.</li>
+							<li>key : (mandatory) : The key present in the response.</li>
+							<li>comparewith : (mandatory) : The value given in this attribute will be comparewith response key</li>
+							<li>refid : (optional) : id attribute of FindElement tag will used as refid for this tag.</li>
+							<li>username  : (optional) : this attribute provides username for login.</li>
+							<li>password  : (optional) : this attribute provides password for login.</li>
+							<li>errormessage  : (optional) : user can give hardcoded message in this attibute.</li>
+							<li>soapaction  : (optional) : </li>
+							<li>basicAuth  : (optional) : </li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="CheckElement" type='checkelement'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Check if an element satisfies specified criteria for further processing using provided locatorType, locatorExpression.
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.</li>
+							<li>criteria : (mandatory) : Specifies the criteria on which the element will be tested.
+								Criteria can be: 
+								- visible, invisible ==> works on any html element. It checks that element displayed or not.
+								- editable, noneditable ==> works on editable form. In view mode it can be used.
+								- enable, disabled ==> works on any html to check, that element is enabled or disabled.
+								- class: disabled ==> works on any html to check that class of that element disabled, so the the element is disabled </li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="CheckIndentedTableRow" type='CheckIndentedTableRow'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Check Indented Table cell of row identified by refid. 
+						<ul>
+							<li>position : (mandatory) : Specifies the column number in the indented table found out by inspecting the DOM.</li>
+							<li>refid : (mandatory) : Refers to the id attribute of SelectIndentedTableRow tag.</li>
+							<li>criteria : (mandatory) : Specifies the criteria on which the element will be tested.
+							   The possible values for this attribute are: visible, invisible, editable and noneditable</li>
+							<li>columnlabel : (mandatory) : Specifies the label of the indented table column.</li>
+							<li>insideFreezePane : (optional) : possible values are 'true' or 'false'.If citieria is true it will check inside the freeze panel.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickBackButton" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Clicks the back button on the page header.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickCategoryCommand" type='categorycommand'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Click on the given category menu command.
+						<ul>
+							<li>title : (mandatory) : The title attribute is used to provide the name of the category menu command that the user wants to be clicked.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickDashboardCheckbox"
+				type='clickDashboardCheckbox'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Tab For ClickDashboardCheckbox.
+						<ul>						
+							<li>action : (mandatory) : action on different checkboxes. checkAll and uncheckAll </li>
+							<li>rows : (optional) : rows are for specific Checkbox and UnCheckbox.</li>						
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickElement" type='ClickElement'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Click Web Element identified using given locatorType and LocatorExpression.
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>highlight : (optional) : attribute used is choose whether to highlight the element when working on it. Takes values true or false.</li>
+							<li>style : (optional) : attribute is used to provide styling to the highlight used.</li>
+							<li>mode : (optional) : attribute is used to select execution action, viz. selenium/js based. Takes values selenium or js.</li>
+							<li>async : (optional) : if mode equals to js then possible values are 'true' or 'false'.</li>
+							<li>criteria : (optional) :  validates click event for further conditions based on criteria.
+											Possible values are
+											- selected : checks if element is selected after click
+											- unselected : checks if element is not selected after click
+											- invisible : checks if element is not visible after click
+							</li>
+							<li>retryCount : (optional) :  retry clicking the element if criteria is not passed.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickForwardButton" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Clicks the forward button on the page header.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickGlobalActionsMenu" type='GlobalActionsMenu'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Click given global action menu/command using command label. 
+						<ul>
+							<li>commandLabel : (mandatory) : User has to pass command label. If command to execute is inside another command, 
+								then user need to pass parent menu/command label and child command label separated by pipe (|).
+								eg.commandLabel='Engineering|Part|Create Part...'</li>
+							<li>highlight : (optional) : attribute used is choose whether to highlight the element when working on it. Takes values true or false.</li>
+							<li>style : (optional) : attribute is used to provide styling to the highlight used.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickGlobalToolsMenu" type='GlobalActionsMenu'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Click given global tools menu/command using command label. 
+						<ul>
+							<li>commandLabel : (mandatory) : User has to pass command label. If command to execute is inside another command, 
+								then user need to pass parent menu/command label and child command label separated by pipe (|).</li>
+							<li>highlight : (optional) : possible values arre true or false,if want to highlight the action keep highlight attribute as true else false.</li>
+							<li>style : (optional) : attribute is used to provide styling to the highlight used.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickHomeMenu" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Clicks Home Menu on Top Bar ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickMyDeskMenu" type='GlobalActionsMenu'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Click given My Desk menu/command using command label.
+						<ul>
+							<li>commandLabel : (mandatory) : User has to pass command label. If command to execute is inside another command, 
+								then user need to pass parent menu/command label and child command label separated by pipe (|).
+								eg.commandLabel='Engineering|Part|Create Part...'</li>
+							<li>highlight : (optional) : possible values arre true or false,if want to highlight the action keep highlight attribute as true else false.</li>
+							<li>style : (optional) : attribute is used to provide styling to the highlight used.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="clickoverridelink" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag is Deprecated now. Default value is false, which is did not allowing http connection for valid certificate,
+						When there is no valid certificate available for https connection, browser will show this link(certificate error) while opening new window. 
+						if having some sites which is inSecure, so you can use set value of true for (e.g. sg-tas.browser.acceptInsecureCerts=true) for allowing inSecure sites.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickPortalCommand" type='portalCommand'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Switch to given portal tab.
+						<ul>
+							<li>title : (mandatory) : In title attribute user must specify portal command title to open.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickRefreshButton" type='ClickRefreshButton'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Clicks the refresh button on the page header.
+						<ul>
+							<li>target : (optional) : possible values are header for widget  refresh button without pin to dashboard & another value is tab for refresh the tab after minimise the widget</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ClickWindowElement" type='clickWindowElement'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Click on any window element with the help of its image.
+						<ul>
+							<li>imagepath : (mandatory) : Specifies the path where the image of the screen element is located.</li>
+							<li>skipError : (optional) : Specifies whether to skip current test case or not. Values are true or false. Should be set to false to run test case.Default value is true</li>
+							<li>refid : (optional) : id attribute of FindElement tag will used as refid for this tag.</li>
+							<li>wait:(Optional) This attribute contains wait time in MS to find element. default wait will be taken from 3DX_TAS propertie's "sg-tas.execution.step.timeout" key.Prefered wait is 10000c.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="CloseAllOtherWindow" type="closeAllOtherWindow">
+				<xs:annotation>
+					<xs:documentation><![CDATA[Close all opened windows except current windo
+						<ul>
+							<li>dismissAlert : (Optional) : Possible values are true and false. it is used to dismiss all the Alert. default value is false.</li>
+						<ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="CloseCurrentWindow" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[this tag is use to close the current window.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="CreateDashboard" type="createDashboard">
+				<xs:annotation>
+					<xs:documentation><![CDATA[to create a new dashboard
+						<ul>
+							<li>input : (mandatory) : name of the dashboard</li>
+							<li>delete : (optional) : this attribute is used to delete the same named upper position dashboard if value is true.default value is false </li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 5000MS..</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Deactive6wSearch" type='deactive6wSearch'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[deactive6wSearch tag is use to deactivate 6w search if it is already activated .
+						<ul>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 7000MS.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="DeleteAllCookies" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[ Delete all the cookies for the current domain and current path.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="DeleteCurrentTabInDashboard" type='deleteCurrentTabInDashboard'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[To delete current tab in dashboard.You can not delete last tab, If you will try to delete the last tab, then it will throw an Exception and tag will failed.Notification message also handled. Notification message also displayed in logs, which tabs is has been deleted
+						<ul>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 5000MS.</li 
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="DeleteDashboard" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[To delete the current dashboard.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="DownloadFile" type='DownloadFile'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Download a file by click on given web element.This tag is deprecated in TAS since 22xfd06, instead of this tag use DownloadFileUsingCommand or DownloadFileUsingIcon tag.
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="DownloadFileUsingCommand" type='DownloadFileUsingCommand'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Select indented table row using level attribute and from action toolbar menu download the file.commandlabel and (id/ input) is mandatory from 22xfd06 for validating the downloaded file.
+												If user don't want to check Download File then no need to provide id/input , it will automatically check the download folder specifies as sg-tas.download.filepath  key in SG_TAS.properties.
+						<ul>
+							<li>commandlabel : (mandatory) : this attribute is the label of the download button in the action toolbar menu in UI.</li>
+							<li>id : (optional) :id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file, So, value of the downloaded filepath which includes the file should pass in csv file.</li>
+							<li>input : (optional) : this attribute is used to provide a hard-coded value for input. value of the downloaded filepath which includes the file should pass as input</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait will be based on the time it takes to download the whole file.</li>
+							<li>checkDownloadFile : (optional) : this attribute is used for activating the download file validation, possible values are true , false. default value is false.</li>
+						</ul>
+						]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="DownloadFileUsingIcon" type='DownloadFileUsingIcon'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[click on the download file icon in the cell of given indented table row.						 
+												Prior to this tag SelectIndentedTableRow tag will have to be used to determine the row to select for download.
+												(id/ input) is mandatory from 22xfd06 for validating the downloaded file.
+												If user don't want to check Download File then no need to provide id/input , it will automatically check the download folder specifies as sg-tas.download.filepath  key in SG_TAS.properties.
+						<ul>
+							<li>position : (mandatory) : Specifies the column number of the concerned cell of the row specified by SelectIndentedTableRow tag in which the download file icon is in the indented table.</li>
+							<li>refid : (mandatory) : Refers to the id attribute in the SelectIndentedTableRow tag and must be the same as it.</li>
+							<li>id : (optional) :id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file, So, value of the downloaded filepath which includes the file should pass in csv file.</li>
+							<li>input : (optional) : this attribute is used to provide a hard-coded value for input. value of the downloaded filepath which includes the file should pass as input</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait will be based on the time it takes to download the whole file.</li>
+							<li>checkDownloadFile: (optioal) This attribute is used for activating the download file validation, possible values are true , false. default value is false.  </li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="DragAndDrop" type='DragAndDrop'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Drag and drop source to target using given locatorType,sourcelocatorExpression and targetlocatorExpression attributes.
+												For Parallel Execution DragAndDrop will not work if mode is robot, as it is a Technical Limitation .
+						<ul>
+							<li>locatorType : (mandatory if mode is not robot) : possible values are 'id','name','css' and 'xpath'.By using one of this Type user can give required expression.</li>
+							<li>sourceLocatorExpression : (mandatory if mode is not robot) : defines the source from where file or object needs to be Drag. </li>
+							<li>targetLocatorExpression : (mandatory if mode is not robot) : defines the target where file or object needs to be Drop. </li>
+							<li>mode : (optional) : defines the mode of the drag and drop operation. Default value is 'js'. Possible values are 'selenium', 'robot', 'js' and 'enterprise'.when mode is enterprise , both sourceFrameRefId and targetFrameRefId were required.</li>
+							<li>sourceOffsetX : (optional) : applicable onyif mode is ''robot'. It defines the offset value for source element from left</li>
+							<li>sourceOffsetY : (optional) : applicable onyif mode is ''robot'. It defines the offset value for source element from top</li>
+							<li>targetOffsetX : (optional) : applicable onyif mode is ''robot'. It defines the offset value for target element from top</li>
+							<li>targetOffsetY : (optional) : applicable onyif mode is ''robot'. It defines the offset value for target element from top</li>
+							<li>sourceFrameRefId : (optional) : applicable onyl if mode is 'robot' or 'enterprise'. It takes the frame refid for source element.</li>
+							<li>targetFrameRefId : (optional) : applicable onyl if mode is 'robot' or 'enterprise'. It takes the frame refid for target element.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="EditIndentedTableRow"
+				type='EditIndentedTableRow'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Edit specific column of selected indented table row.The row selection should be done using SelectIndentedTableRow tag.
+						<ul>
+							<li>refid : (mandatory) : id attribute of SelectIndentedTableRow tag is the refid of this tag. So, using this refid script will identify the row to be edited.</li>
+							<li>position : (mandatory) : It identifies the column number of the row selected using SelectIndentedTableRow tag</li>
+							<li>action : (mandatory) : This attributes action to perform on specific cell of row.
+								   The possible values are
+									- text: set the text of specific cell of given row.
+									- select: select item within dropdown list of specific cell of given row.
+									- click: click on specific cell of given row.  
+									- date: Used to enter date in the specific cell of selected row.
+									- textwithselect: Used to enter text and select value from dropdown in the specific cell of the selected row.
+									- checkbox: Used to select/deselect checkbox in the specific cell of the selected row
+									- typechooser: Used to select type to populate in the specific cell of the selected row.
+									- chooser: Used to search for and choose value for the specific cell of the selected row. 
+											   Id attribute takes the value to search and select from the csv file.
+							</li>
+							<li>id : (optional if input attribute is used) :id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file, So, value of level or text should give in csv file.</li>
+							<li>input : (optional if id attribute is used) : attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.</li>
+							<li>insideFreezePane : (optional) : possible values are 'true' or 'false'.If citieria is true it will check inside the freeze panel.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ELSE" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This is similar to else statement in programming language.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ELSEIF" type='if'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This is similar to conditional elseif statement in programming language. else if is a conditional statement performed after an if statement that, if true, performs a function,
+												 elsif could be used to create an additional conditional statement 
+						 <ul>
+							<li>locatorType : (optional) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (optional) : This attribute contains expression specific to locator type.</li>
+							<li>id : (optional) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.This attribute is mandatory only when criteria is attribute or text.</li>
+							<li>criteria : (mandatory) : Specifies the criteria on which the element will be tested.
+								criteria can be: 
+								- Text : Web element text value is equals to value passing in CSV file.
+								- attribute : check the value of attribute for Web Element  Ex : class, title .
+								- visible :  To Check Whether or not the Web element is displayed.
+								- found : Web element is found or not.
+							</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 6000MS.</li>
+							<li>condition : (optional) : There are 2 types of condition: =,!=. this attribute is required if criteria is text or attribute.Default value id '='</li>
+							<li>refid : (optional) : id attribute of FindElement tag will used as refid for this tag.</li>
+							<li>attribute : (optional) : it specifies the attribute available on web elements.E.g.- name, value, class, rmbIdm, rmbrow  etc. This attribute is only used when criteria is attribute.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ENDIF" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag indicate the end of if tag. This tag will used to define bound of if statement.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="EndPost" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag indicate the end of post process section of test case]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="EndStep" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[To Close Current Step.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Execute" type="execute">
+				<xs:annotation>
+					<xs:documentation><![CDATA[Execute method of exeternal java program
+						<ul>
+							<li>class : (mandatory) : it defines java class or jar file that has been added to the TAS class path/build path for it to be located.</li>
+							<li>method  : (mandatory) : the method from the class mentioned in the tag to be executed.</li>
+							<li>id:(optional) : Id(CSV) attribute is a csv column identifier which is already discussed in InputText tag.It can be used by user to input text if necessary.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="FindElement" type='findelement'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Find the Web Element identified using given locatorType and LocatorExpression.
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>id : (optional) : id attribute is used to store reference of this element</li>
+							<li>input : (optional) : this attribute is used to provide a hard-coded value for input.</li>
+							<li>mode : (optional) : attribute is used to select execution action, viz. selenium/js based. Takes values selenium or js.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="GetValueFromCookies" type='getValueFromCookies'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag gives the value of cookie name provided in the tag.
+						<ul>
+							<li>cookieName : (mandatory) : used to give name of cookie key.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="GlobalSearch" type='globalsearch'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Search object in 3DExperience, use either id or input attribute for this tag which is mandatory.
+						<ul>
+							<li>id : (optional when input used) : id(CSV) attribute is used to take value to search from csv.</li>
+							<li>input : (optional when id used) : attribute is used to provide a hard-coded value for input instead of using id attribute from csv file</li>
+							<li>type : (optional) :Select given type from global search type selection list. Default type value is All.</li>
+							<li>searchtype : (optional) :In order to select sub type, parent type and sub type should given separated by pipe(|) like Change|Change Order.</li>
+							<li>highlight : (optional) : attribute used is choose whether to highlight the element when working on it. Takes values true or false.Deafult value is false.</li>				
+							<li>style : (optional) : attribute is used to provide styling to the highlight used.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="HandleAlert" type='alert'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[User use this tag to handle an alert pop up message.
+						<ul>
+							<li>action : (mandatory) : With the action attribute we can 'accept' or 'dismiss' alert.</li>
+							<li>optional : (optional) : possible values are true or false.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="HighLightElement" type='highLightElement'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Highlight Element is to highlight the located expression with some style.
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>id : (optional) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file..</li>
+							<li>style : (optional) : attribute is used to provide styling to the highlight used.</li>
+						</ul> ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="IF" type='if'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This is similar to conditional if statement in programming language.
+						<ul>
+							<li>locatorType : (optional) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (optional) : This attribute contains expression specific to locator type.</li>
+							<li>id : (optional) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.This attribute is mandatory only when criteria is attribute or text.</li>
+							<li>criteria : (mandatory) : Specifies the criteria on which the element will be tested.
+								criteria can be: 
+								- Text : Web element text value is equals to value passing in CSV file.
+								- attribute : check the value of attribute for Web Element  Ex : class, title .
+								- visible :  To Check Whether or not the Web element is displayed.
+								- found : Web element is found or not.
+							</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 6000MS.</li>
+							<li>condition : (optional) : There are 2 types of condition: =,!=. this attribute is required if criteria is text or attribute.Default value id '='</li>
+							<li>refid : (optional) : id attribute of FindElement tag will used as refid for this tag.</li>
+							<li>attribute : (optional) : it specifies the attribute available on web elements.E.g.- name, value, class, rmbIdm, rmbrow  etc. This attribute is only used when criteria is attribute.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Include" type="include">
+				<xs:annotation>
+					<xs:documentation><![CDATA[Include xml in current xml.Working as building block.
+						<ul>
+							<li>filepath  : (mandatory) : Define the Path of the building block (xml file).</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="InputText" type='inputText'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Insert text into an input field.
+						<ul>
+							<li>locatorType : (Optional) : If refid is not used then locatorType is Mandatory.There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (Optional) : If refid is not used then locatorExpression is Mandatory.This attribute contains expression specific to locator type.</li>
+							<li>refid : (Optional) : If refid is used than locatorType and locatorExpression is not mandatory.id of FindElement tag will used as refid for this tag.</li>
+							<li>id : (Optional) : id attribute is mapped to csv file column header.Input value should be taken from csv file.For inputText tag outof id and input , need to use only one attribute at a time.</li>
+							<li>highlight : (optional) : attribute used is choose whether to highlight the element when working on it. Takes values true or false.</li>
+							<li>style : (optional) : attribute is used to provide styling to the highlight used.</li>
+							<li>input : (optional) : attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.For inputText tag outof id and input , need to use only one attribute at a time.</li>
+							<li>mode : (optional) : defines the mode of the inputText operation. Default value is 'selenium'. Possible values are 'selenium', and 'js'</li>
+							<li>encrypted : (optional) : attribute is used to allow encrypted/unencrypted text entry into input field.Takes values true or false implying that text will be decrypted or taken as it is respectively before input occurs.</li>
+							<li>newLine : (optional) : attribute is used to add delimitter or dump | for switching to new line.Takes values true or false implying that text will be newline.</li></li>
+					   </ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="InputWindowElement" type='inputWindowElement'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Clicks and inputs value in  any element on the browser screen using an image of the element.
+						<ul>
+							<li>imagepath : (mandatory) : Specifies the path where the image of the screen element is located.</li>
+							<li>skipError : (optional) : Specifies whether to skip current test case or not. Values are true or false. 
+															Should be set to false to run test case. Its default value is True</li>
+							<li>id : (mandatory) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>wait:(Optional) This attribute contains wait time in MS to find element. default wait will be taken from 3DX_TAS propertie's "sg-tas.execution.step.timeout" key.Prefered wait is 10000.</li>
+							<li>refid : (optional) : id attribute of FindElement tag will used as refid for this tag.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Lifecycle" type='lifecycle'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Click on Promote/Demote lifecycle button.
+						<ul>
+							<li>action : (mandatory) : attribute has two possible values
+											- promote: clicks on promote button.
+											- demote : clicks on demote button.</li>
+							<li>validateTargetState : (optional) : attribute having null or boolean values
+									 - true or null : it will validate source and target state, both must not be same.
+									 - false        : it will not validate the Source and target state.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Logout" type='logout'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Logout the current user session of 3DExperience.
+						<ul>
+							<li>preCheck : (optional) : This is a optional attribute which allows to precheck any slideinwindow or opensearchresult window before logging out.</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 2000MS.This attribute is only applicable for 2024xfd04 </li>		
+							<li>isDashboard: (optional): Optional attribute. possible values-true, false. If value is true, then used to logout from 3DDashboard, else it is used to logout from 3dspace. Default values is false.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Login" type='login'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Login to 3DExperience by providing valid username and password.
+						<ul>
+							<li>username : (mandatory) : this attribute provides username for login into 3DExperience.</li>
+							<li>password : (mandatory) : this attribute provides password for login into 3DExperience.</li>
+							<li>closeWelcome : (optional) : this attribute is used to handle the welcome window after log in , possible values are true and false.</li>
+							<li>location : (optional) :used to provide location value for Security Context.</li>
+							<li>role : (optional) : used to provide role value for Security Context</li>
+							<li>organization : (optional) : used to provide organization value for Security Context</li>
+							<li>project : (optional) : used to provide project value for Security Context.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="MaximizeAndMinimize"
+				type='MaximizeAndMinimize'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Maximize and minimize the widget.
+						<ul>
+							<li>maximizeminimizeWidget : (Optional) : If 'true', maximizes the widget, if 'false' minimizes the mentioned widget. Default value is false.</li>
+							<li>appname : (mandatory) : This attribute contains name of the widget to be maximized and minimized.</li>
+						</ul>]]>
+					</xs:documentation>
+
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="MaximiseWindow" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Maximise the current window.User can use this tag when they want to maximise the window.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="MqlAssert" type='mqlAssert'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Validate Test Case Execution against Enovia Server using Mql. for TNR value , 
+						<ul>
+							<li>condition : (mandatory) : There are 8 types of condition: "validatetnr","validatetid","validatetstatefromid","validatetstatefromtnr","validatetattributefromtnr","validatetattributefromid","validatetdeletionfromid","validatetdeletionfromtnr"</li>
+							<li>id  : (Optional when input used) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>input  : (Optional when id used) : input attribute is used to provide a hard-coded value for input instead of using id attribute from csv file</li>
+							<li>selectExpression  : (optional) : selectExpression attribute used with validateattributefromtnr, validateattributefromid to pass the selected expression in mql. </li>				
+							<li>errormessage  : (optional) : user can give hardcoded message in this attibute.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="OpenActionToolbarMenu"
+				type='openActionToolbarMenu'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Open the specified action toolbar menu command.
+						<ul>
+							<li>commandlabel : (mandatory) : specifies the label of the command which will be clicked in UI.</li>
+							<li>targetwindow : (optional) : specifies the target location of the window after clicking the command. Eg : popup, content, slidein</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="OpenChooser" type='openChooser'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Click chooser button next to given field.
+						<ul>
+							<li>fieldlabel : (mandatory) : it will be used to find the chooser button. User must give label of field which has chooser button.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="OpenCompassApp" type='CompassApp'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Click given Compass Quadrant and open the given Compass App.
+						<ul>
+							<li>quadrant : (optional) :This attribute refers to the quadrant, from which user needs to launch the sg-tas 2.0 188 / 252 required application. 
+													   The possible values are north, south, east and west, Attribute is used to open quadrant of Compass App. Quadrant was mandatory field till 2020x.</li>
+							<li>appname : (mandatory) : Compass app name to be opened.</li>
+							<li>appIndex : (optional) : If multiple apps are returned by Search, select desired app by it's number in list, viz. 1,2, etc.</li>
+							<li>wait : (optional) : wait attribute is added for 21x for enhance performance issue.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 5000MS.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="OpenNewTabInDashboard" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Open the new Tab in 3DDashBoard.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="OpenNewToolbarInDashboard" type='openNewToolbarInDashboard'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Open the new Tab in 3DDashBoard.
+						<ul>
+							<li>toolbarName : (mandatory) :  Name of toolbar which user want to select.</li>
+							<li>actionmenu : (mandatory) : action on different action menu. Name of the menu in toolbar.</li>
+							<li>dropdownOption : (optional) : choose any dropdown option as per action menu name.</li>						
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="OpenSearchResult" type='opensearchresult'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[ To Open Global Search Result.If column or value is not used the both the attribute will be set to it's default value.If customizedResult is true then column and value attribute will only applicable for non freezePane.
+						<ul>
+							<li>id : (Option if input used) :  id(CSV) attribute is mapped to csv file column header, Input value should be taken from csv file.This attribute will be the name column value.</li>
+							<li>input : (Option if id used) :  This attribute will be the name column value. input attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.</li>
+							<li>criteria : (optional) :  possible values are 'text' or 'row-number',specifies the criteria on which the searched object will be opened. This attribute is only applicable before sg-tas.3dspace.release of V6R2019</li>
+							<li>column : (optional if customizedResult is false) : name of column header to identify the object with same name.Possible values are Manufacturer ID,Manufacturer ASGID,Type,Description,Name,Revision,Owner,Creation Date,Modification Date. Default value is Name.If customizedResult is true then column attribute will only applicable for non freezePane.</li>
+							<li>customizedResult : (optional) : This attribute is only for custom tables, only if the value is true, default value is false.</li>
+							<li>openWith : (optional) : openWith attribute is for dashborad search result. User have to define the attribute value in this openWith result in which that to open that search result.</li>
+							<li>value : (optional if customizedResult is false) : Value of column header's value to identify the object.Default value is the value of id attribute.If customizedResult is true then value attribute will only applicable for non freezePane.</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 3000MS.This attribute is only applicable for 21x, 22xfd02 and 22xfd06 </li>		
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="OpenURL" type="openURL">
+				<xs:annotation>
+					<xs:documentation><![CDATA[Navigate to a given URL
+						<ul>
+							<li>url or id : (any one is mandatory) : Id(CSV) attribute is csv column identifier, it takes given url value from CSV and url is a direct/hardcoded url. if url or id equals to null or empty then it will take value from sg-tas.tag.openurl.url key of browser property.</li>
+							<li>target : (optional) : possible values are 'self'(default), 'tab' and 'window'. self will open url in same window, tab will open url in new tab and window will open url in new window</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="option" type='option'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Select single or multiple options from Select Box. 
+						<ul>
+							<li>selectBoxName : (optional) : ID of the selectbox from which options to be selected.</li>					
+							<li>selectBoxId : (optional) : ID of the selectbox from which options to be selected.</li>
+							<li>selectList : (mandatory) :  1) For multiselect : Comma saparated list of title of the options to be selected. eg."AllowDelegation,Action".
+															2) For single select : Title of the option to be selected. eg."AllowDelegation"</li>	
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="optionalStart" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Starting tag for tags which grouped between optionalStart and optionalClose and can be skipped even if it is failed.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="optionalClose" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Ending tag for tags which grouped between optionalStart and optionalClose and can be skipped even if it is failed.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="OutlookLogin" type="outlookLogin">
+				<xs:annotation>
+					<xs:documentation><![CDATA[The OutlookLogin tag is used to open emails in Outlook. This tag cannot be applied to accounts where two-factor authentication is enabled.
+						<ul>
+							<li>username : (mandatory) : this attribute provides username for login into Outlook.</li>
+							<li>password : (mandatory) : this attribute provides password for login into Outlook.</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 10000MS.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+
+
+			<xs:element name="ValidateTableExport" type="validateTableExport">
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag allows the user to validate the table export in CSV format and ensure the table exists in the UI. It exports the CSV file and compares the downloaded CSV table with the table in the UI for validation.
+						<ul>
+							<li>headerList : (mandatory) :  If not provided header list from the csv file headerName then it will give you Error. so please give correct header list name with Pipe separated value. list of headers to be matched in csv and UI table.</li>
+							<li>skipCount : (mandatory) :  If not provided Skip column count number from the csv file then it will give you Error. so please give skipCount column number regarding empty column. if column is not empty then provide 0 value in skipCount="0", Number of lines to be skipped in csv file before reading header.</li>
+							<li>filePath : (optional) :  please provide specified file path name, file path in case of modified download path in browser.By default, the path will be taken from the key 'sg-tas.download.filepath' in the SG_TAS.properties file.</li>
+							<li>time : (optional) :This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 5000MS.</li>
+							<li>skipError : (optional) : Possible values are true and false. default value is false to throw the error and true to ignore the error.</li>
+							<li>refIdForTool : (optional) : This attribute is optional and it will be used only when in UI user get multiple elements for '//div[@id='divToolbar']//td[@title='Tools']/img[@src='../common/images/iconSmallAdministration.png']' this xpath & specific xpath will be required to run this tag.In this case user can use the id attribute of findelement and refer the ID here as refIdForTool.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="OutlookLogout" type="outlookLogout">
+				<xs:annotation>
+					<xs:documentation><![CDATA[Close the current 'self'(default), 'tab' and 'window'
+						<ul>
+							<li>username : (mandatory) : this attribute provides username for logout into Outlook.</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 7000MS.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="PinWidgetToDashboard" type="pinWidgetToDashboard">
+				<xs:annotation>
+					<xs:documentation><![CDATA[To pin an opened widget to a new tab in dashboard.
+						<ul>
+							<li>pinBtnInWidget : (optional) : possible values are 'true' or 'false'. Default value is 'false'. Used to differentiate cases where pin button is inside widget it value will be false and where pin button is in header its value will be true for PinWingetToDashboard.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SearchOutlookMail" type="searchOutlookMail">
+				<xs:annotation>
+					<xs:documentation><![CDATA[SearchOutlookMail tag is used to search the subject and open mail by providing valid emailid.
+						<ul>
+							<li>searchText : (mandatory) : this attribute searchText is used to search in outlook.</li>
+							<li>searchMailId : (mandatory) : this attribute searchMailId is used to search by mailId in outlook.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="StartPerformanceLogs" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag indicate the start point for performance logs.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Step" type='step'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Step tag use to group the steps with functional title with help of id and title attribute.
+						<ul>
+							<li>id : (mandatory) : used to give unique id for group of steps.</li>
+							<li>title : (mandatory) : used to give unique name for group of steps.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SetStartWindow" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[User can use Setstartwindow tag when there are multiple windows opened and he want to set one of them as start window.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SwitchToStartWindow" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Window which is tagged as start window user can able to switch same window by Switchtostartwindow tag.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Post" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag indicate the beginning of post process section of test case.This should be at the end of test case.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="RegisterIndentedTableObjects" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[To Register current indented table objects.User can use this Tag to register the current indented table row After creation.This tag should be used after creating new objects and after use of SelectOrOpenNewIndentedtableRow tag.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SwitchToParentFrame" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Switch context to Parent Frame. If current frame is top frame then context remains unchanged]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SwitchToContentFrame" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Move script control to content frame.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SwitchToDetailsDisplayFrame" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Move script control to details display frame.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SwitchToPortalDisplayFrame" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Move script control to portal display frame.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SwitchToDefaultContent" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[To return script control back to default from any frame.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SwitchToParentWindow" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Move script control to parent window.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SwitchToSlideInWindow" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Move script control to slidein frame.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ApplySearch" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag is used when use choose advance Search and used to Click on Submit button for applying the Search filter form.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ResetSearch" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag is used to reset the filter search form property.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Print" type='print'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Print message on console and debug log.
+						<ul>
+							<li>message:(mandatory) : possible variables are
+									- $currentFrame - it will print current frame name in the log as well as in console file
+									- $currentWindow - it will print current window name in the log as well as in console file 
+									- $lineNumber - it will print line number of current executing line in the log as well as in console file
+									- $currentFileName - it will print current executing file name in the log as well as in console file 
+									- $currentDate - it will print system date in the log as well as in console file </li>
+									- $currentStep - it will print Step tag id and title in the log as well as in console file </li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="RegisterObject" type='registerobject'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Register an object’s name in a property file or in database by locatorType and locatorExpression for future reference.
+						<ul>
+							<li>locatorType : (optional) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (optional) : This attribute contains expression specific to locator type.</li>
+							<li>id : (optional if input used) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file,if id equals to blank then it takes empty key in objectregister.properties</li></li>
+							<li>input : (optional if id used) : attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.</li>
+							<li>attribute : (optional) : it specifies the attribute available on web elements to be register.E.g.- name, value, class, rmbIdm, rmbrow  etc....</li>
+							<li>removeSpace : (optional) : It is used to trim the date string</li>
+							<li>lenth : (optional) : It is the lenth of the total randomc Character including prefix and suffix</li>
+							<li>prefix : (optional) : It is use for prefix value</li>
+							<li>suffix : (optional) : It is use for suffix value</li>
+							<li>numeric : (optional) : It is use for auto generating unique numeric value. It default value will be false..if actual length is  less than one then numeric number can not be generated and it will print error message in log.Also if actually length is 1 then it print 0 every time.
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SelectContextMenuOption" type="selectContextMenuOption">
+				<xs:annotation>
+					<xs:documentation><![CDATA[Select option from context menu in 3ddashboard
+						<ul>
+							<li>refid : (mandatory) : id of FindElement tag will used as refid for this tag.</li>
+							<li>menuOption : (optional) : option number in menu. Default value is '2'.</li>
+						<ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="RunMQL" type='RunMQL'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Run the given mql and validate the result.
+						<ul>
+							<li>id : (optional when input used) : id attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>input : (optional when id used) : This attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.</li>
+							<li>condition : (mandatory) : There are nine types of condition: none,=,!=,<,>,<=,>=, contains,not contains.</li>
+							<li>errormessage  : (optional) : user can give hardcoded message in this attibute.</li>
+							<li>result  : (optional) : this attribute is used to take the value of expected output of the given mql query, and this attribute is applicable when the condition attribute's value is not none.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ReadXML" type="readXML">
+				<xs:annotation>
+					<xs:documentation><![CDATA[ReadXML another test case to UnZip in current zipfile from browserLocation or manually location.
+						<ul>
+							<li>id : (optional) : Optional if input attribute is use. Path of the building block (zip file) present in testsuites, id attribute of ReadXML tag is used as refid for AssertXML tag.</li>
+							<li>input : (optional) : Optional if id attribute is use. Path of the building block (zip file) present in testsuites.</li>
+							<li>fromBrowserDownloadLocation (mandatory): Path of the building block (zip file) present in testsuites.</li>
+							<li>unZipLocation  :  (mandatory) : Path/Dir of the zip file where it has been extracted. unzip file folder.</li>
+							<li>unzip : (mandatory) : Boolean Check for file to unZip</li>
+							<li>downloadFileExt: (mandatory) : : Provide extension of file of Unzip File i.e xml/pdf/word</li>
+							<li>regexExpr :(optional) : Provide regexExpr only when xml file contains regular expression.</li>
+							<li>deleteFile :(optional) : Default value is true, true or null, false value for delete and undelete zip and xml file respectively.</li>	
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ScrollToElement" type='ScrollToElement'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Move scroll bar to make element visible by using LocatorType and LocatorExpression.
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>CountForVertical : (optional) : if the scroll is dynamic , then this attribute can be applicable. default value is 21 (number of time to enter ARROW key). For Vertical scroll only.</li>
+							<li>CountForHorizontal : (optional) : if the scroll is dynamic , then this attribute can be applicable. default value is 3 (number of time to enter ARROW key)  For horizontal scroll only.</li>
+							<li>scrollArea : (optional) :This attribute is the locatorExpression of that scroll area where Height & Width is mention in px.This attribute is used for dynamic scroll not for static scroll</li>
+							<li>direction : (optional) :if the scroll is dynamic , then this attribute is mandatory , possible values are up,down,right,left.</li>
+							<li>click : (optional) :if the scroll is dynamic this click is required, so its required to select the first item , for  this this attribute is used and possible value's are right and left.Default value is left</li>
+						    <li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 5000MS.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SelectAndSubmit6WTagsSearch"
+				type='selectandsubmit6wtagssearch'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[ Select a search result(for 6W tags search page). 
+						<ul>
+							<li>selection : (mandatory) : There are 2 types of selection: single and multiple, this lets us choose the type of selection.</li>				
+							<li>id : (optional When Input used) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>input : (optional when id used) : attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.</li>
+							<li>submitLabel : (mandatory) : Label of Submit button.</li>
+							<li>columnName : (optional) : name of column header to identify the object in addition to the name.</li>
+							<li>columnValue : (optional) : name of column value to identify the object in addition to the name.</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 3000MS.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SelectDate" type='selectDate'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Select Date from date picker. Date format: Month Day, Year Eg: May 6, 2018
+						<ul>
+							<li>LocatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath, to define the locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>input : (optional when id used) : input attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.</li>
+							<li>id : (optional when input used) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>selecttag:(optional): possible values are 'true' or 'false'& default vaue is false.value is true if user want to use SelectDate & after inspecting DOM if user is getting elements like option and select attribute .</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SelectSecurityContext" type="SelectSecurityContext">
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag is used to set security context from top bar using provided values for Organization, Collaborative Space and Role.
+						<ul>
+							<li>organization : (mandatory) : used to provide organization value for Security Context</li>
+							<li>collaborativeSpace : (mandatory) : used to provide collaborativeSpace value for Security Context</li>
+							<li>role : (mandatory) : used to provide role value for Security Context</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SelectColor" type='selectColor'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Select color in input (type=color) field identified using given locatorType and locatorExpression attributes.
+						<ul>
+							<li>color : (mandatory) : color is attribute having hexadecimal color code (e.g. #ff0000) value.</li>
+							<li>locatorType : (mandatory) : possible values are 'id','name','css' and 'xpath'.By using one of this Type user can give required expression.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>highlight:(optional) : This attribute is used to choose whether to highlight the element when working on it. Takes values true or false.Default value is false
+							<li>style:(optional) : This attribute is used to provide styling to the highlight used.Default value is taken from 3DXtAS Property key 'sg-tas.highlight.webelement.style'.Only if  highlight is true.
+					   </ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="StopPerformanceLogs" type='stopPerformanceLogs'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag indicate the stop point for performance logs.
+						<ul>
+							<li>startRequest : (optional) : used to provide first occurence of a request containing passed value.Time is calculated from this point.</li>
+							<li>stopRequest : (optional) : used to provide last occurence of the request containing passed value.Time is calculated upto this point.</li>
+							<li>requestOccurence : (optional) : possible values are 'first' or 'last', default value is 'first'. By giving this value, we can decide the occurence of the stoprequest in the recorded logs.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SelectElement" type='locatorCSV'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Select element of list box.use either id or input attribute.
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>id : (optional when input used) : id(csv) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>input : (optional when id used) : attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SetContent" type='locatorCSV'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Set content of element identified using given locatorType and LocatorExpression.either use id or input any one attribute is mandatory.
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>id : (optional if input attribute is used): id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>input : (optional if id attribute is used) : attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="Wait" type='wait'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Pause the execution for given time.
+						<ul>
+							<li>time : (mandatory) : time attribute defines wait interval. User must pass time in milliseconds.</li>
+							<li>for : (optional) : The for attribute defines whether script should process wait normally with given time, wait for entire
+								  page to load or wait for an element given by locatorType, locatorExpression to appear and accordingly has values time, page and element respectively.</li>
+							<li>locatorType : (mandatory only for for="elememt") : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory only for for="elememt") : This attribute contains expression specific to locator type.</li>
+							<li>afterTime : (optional) : Possible values - pass, fail. Whether to pass or fail the test case if element not found after time.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SwitchToFrame" type='switchtoframe'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[In order to access element inside given frame,focus need to be switch that frame.If user want to switch to nested frame then both child and parent frame name must be give in below format.e.g. parentframename=>childframename
+						<ul>
+							<li>name : (mandatory) : defines the name of the frame. If frame name is not defined, then use id of frame element as name.</li>						
+							<li>refid : (optional) : id attribute of FindElement tag will used as refid for this tag.</li>
+							<li>index : (optional) : if frame to be switched to does not have a name or id, it can be located relatively using index number of the frame.</li>
+							<li>locatorType : (optional) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (optional) : This attribute contains expression specific to locator type.</li>
+							<li>removeSpace:(optional) This attribute removes extra space from the value if set to 'true' . possible values are 'true' or 'false'</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SelectIndentedTableRow" type='selectindentedtablerow'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Select indented table row to perform specific action on column of the that row.
+						<ul>
+							<li>expand : (optional) : possible values are 'true' or 'false'.Default is true.If its value is true then while traversing the levels of indented table, it will click on (+) button else it will not click. 
+								 						This (+) button is used to expand the current level, if the level is already expanded then it will ignore expand operation for that level.</li>
+							<li>criteria : (mandatory) : possible values are 'level' or 'text'.Indented table row is selected based on given level or text of first column.
+														- Level : It is starting from zero. So, level for root is 0. Comma (,) is used as separator between levels.
+														- text : Select indented table row based on text of first column of the row. 
+														- hyperlinktext :  criteria is used when the searched text is hyperlink.for this , text assertion will happen only on the first col of non freeze pane.</li>
+							<li>selectcheckbox : (optional) : possible values are true or false..Default is true.If its value is true then script will select checkbox else it will not.</li>
+							<li>isnew : (optional) : possible values are 'true' or 'false'..Default is false.</li>
+							<li>id : (optional) : This is optional attribute if input attribute is used. ID(CSV)  is csv column identifier. So, value of level or text should give in csv file.</li>
+							<li>input : (optional) : This is optional attribute if Id attribute is used. This attribute is used to provided the value of level or text hardcoded in tag.</li>
+							<li>section : (optional) : If criteria is “text” then only section tag will be of use. Possible values for section tag are “table” and “freezepan”..Default is table.</li>
+							<li>dialog : (optional) : This attribute is for table in dialog window. For indented table in dialog window, set this value to 'true'. Possible values are 'true' or 'false'. Default value is 'false'.</li>
+							<li>linkValue : (optional) : This attribute is for case where there is link in the column value.Possible values are 'true' or 'false'. Default value is 'false'.</li>
+							<li>wait: (optional) : This attribute contains wait time in milliseconds to find element.Default value will be taken from 'sg-tas.execution.step.timeout'.Prefered wait is 2000MS. Only applicable for 22xfd06</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SwitchToWindow" type="SwitchToWindow">
+				<xs:annotation>
+					<xs:documentation><![CDATA[Pass script control to given window. 
+						<ul>
+							<li>title : (optional) : represent title of window to switch. You can inspect web page and find the title of page </li>
+							<li>last  : (optional) : possible values are true or false, default value is false.<li>
+							<li>onLoadCompletion  : (optional) : possible values are true or false, default value is true. true is to switch to a window where the loding is complete and false is to switch to a window where the loding is still going on. </li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SelectOrOpenNewIndentedTableRow" type='selectoropennewindentedtablerow'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[To Select Or Open newly Created element in indented table. This tag should be used in combination of RegisterIndentedTableObjects tag.
+						<ul> 
+							<li>criteria : (mandatory) :  possible values are open or select.Select is used to select the object and Open is use to open the object..</li>
+							<li>searchByIdentifier : (optional) : possible values are 'true' or 'false'. default value is false.By using this attribute , it can open or select the new object in Indented table.</li>
+							<li>id : (optional) :  used only if searchByIdentifier is 'true'. id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file which has to be defined by user in csv. This value will used to search to the object which user wants to select or open.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ValidateTableHeader" type="validateTableHeader">
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tab is used to validate table header in csv.
+						<ul>
+							<li>headerList : (mandatory) :  If not provided header list from the downloaded  file headerName then it will give you Error. so please give correct header list name with Pipe separated value. list of headers to be matched in any file and table.The sequence of header list should be same as downloaded file headers.</li>
+							<li>downloadFileExt : (optional) : Extension of the file. If not provided Extension then it will by default take csv Extension.Possible values are csv,xlsx or xls.</li>
+							<li>skipCount : (optional) : number of lines to be skipped in csv/xlsx/xls file before reading header.</li>
+							<li>filePath : (optional) : filePath is used to specify directory of downloaded file.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SendKeys" type='sendKeys'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Sending keystrokes to an Application.
+						<ul>
+							<li>key : (mandatory) : Possible values for key are : "CANCEL","HELP","BACK_SPACE","TAB","CLEAR","RETURN","ENTER","SHIFT","LEFT_SHIFT",
+													"CONTROL","LEFT_CONTROL","ALT","LEFT_ALT","PAUSE","ESCAPE","SPACE","PAGE_UP","PAGE_DOWN","END","HOME","LEFT",                
+													"ARROW_LEFT","UP","ARROW_UP","RIGHT","ARROW_RIGHT","DOWN","ARROW_DOWN","INSERT","DELETE","SEMICOLON","EQUALS",
+													"NUMPAD0","NUMPAD1","NUMPAD2","NUMPAD3","NUMPAD4","NUMPAD5","NUMPAD6","NUMPAD7","NUMPAD8","NUMPAD9","MULTIPLY",
+													"ADD","SEPARATOR","SUBTRACT","DECIMAL","DIVIDE","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12"
+													Apart from above mentioned key you can pass any key with combination of above.
+													For example: 
+													SHIFT+"AnytextValue”
+													CONTROL+a 
+													NOTE: if the key is not valid then it will pass as text to the web element.</li>
+							<li>LocatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>id  : (optional) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SelectWindowRegion" type='selectWindowRegion'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Select Window Region to perform specific action in that region.
+						<ul>
+							<li>imagepath : (mandatory) : Specifies the path where the image of the screen element is located.</li>
+							<li>skipError : (mandatory) : Specifies whether to skip current test case or not. Values are true or false. Should be set to false to run test case</li>
+							<li>id : (mandatory) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>wait:(Optional) This attribute contains wait time in MS to find element. default wait will be taken from 3DX_TAS propertie's "sg-tas.execution.step.timeout" key.Prefered wait is 10000.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ValidateBegin" type='validateBegin'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Starting tag for tags which grouped between ValidateBegin and ValidateEnd and can open the xls, xlsx file.
+						<ul>
+							<li>filepath  : (mandatory) : Path of the building block (xlsx, xls file) present in testsuites.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ValidateBehaviour" type='validateBehaviour'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Starting tag for tags which grouped between ValidateBegin and ValidateEnd and can open the xls, xlsx file.
+						<ul>
+							<li>row  : (mandatory) : This attribute is used to validate row data, only if col is empty or null.</li>
+							<li>col  : (mandatory) : This attribute is used to validate col data, only if row is empty or null</li>
+							<li>sheet  : (mandatory) : This attribute is used to validate data from given sheet number, if sheet is empty or null, it will take default sheet 0. </li>
+							<li>data  : (mandatory) : This attribute is used to validate data which is present in row, col or in both.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ValidateEnd" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Starting tag for tags which grouped between ValidateBehaviour to give filepath location with proper extension, ValidateBegin and ValidateEnd and can close the xls, xlsx file.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="ShowNotification" type='showNotification'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Show custom message on system notification tray.
+						<ul>
+							<li>message : (mandatory) : this attribute is used to pass the message which will be printed in the log file.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="UploadFileUsingDragAndDrop" type='draganddropfile'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Upload file to 3DExperience using drag and drop method.
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>path : (mandatory) : attribute specifies the file path on local drive to upload it to 3DExperience.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="uploadFileUsingLocator" type='uploadFileUsingLocator'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Upload file to 3DExperience using locator of element which will open file browser dialog. Any of the attribute id/path is mandatory, if both attribute used then id will be taken and path will be ignored
+						 This tag is only applicable for html tag input. Hence it will only work for input html field.
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>path : (optional if id used) : Specifies the path of the file to upload from local file system.</li>
+							<li>id : (optional if path used) :id(CSV) attribute is mapped to csv file column header, id attribute is used to take value to search from csv.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="uploadFileForDashboard" type='uploadFileForDashboard'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Upload file to 3DDashboard using locator of element which will upload file to dashboard, use either path or id any one attribute. 
+						<ul>
+							<li>locatorType : (mandatory) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>path : (mandatory) : Specifies the path of the file to upload from local file system.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+
+			<xs:element name="FilterSearchPerson" type='filterSearchPerson'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag is used to filter search person. 
+						<ul>
+							<li>fieldlabel : (mandatory) :This attribute used to selecte label value.</li>
+							<li>selectionType : (mandatory) : This attribute has two values, 
+										1. text: it will select with help select text as per user given.
+										2. row-number : it will select as per rows value. and give row number in row attribute</li>					
+							<li>row : (optional) : Provide row number in row attribute</li>
+							<li>id : (mandatory) :id(CSV) attribute is mapped to csv file column header, id attribute is used to take value to search from csv.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="FilterSearchForm" type='filterSearchForm'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[Upload file to 3DDashboard using locator of element which will upload file to dashboard, use either path or id any one attribute. 
+						<ul>
+							<li>inputfieldtype : (mandatory) : This attribute used to select label value.</li>
+							<li>fieldlabel : (mandatory) : This attribute contains expression specific to locator type.</li>
+							<li>id : (mandatory) :id(CSV) attribute is mapped to csv file column header, id attribute is used to take value to search from csv.</li>
+							<li>criteria : (optional) : This attribute has four values for selecting the date picker:
+														1. on: From & To = Same Date
+														2. on or after: From Date only	
+														3. on or befor: To Date only
+														4. before: From and ToDates	: it will take in Pipe saprator in id(CSV): "12-12-23|16-11-23".										
+							<li>selection : This attribute is used to select the search values and it has 4 values: 
+											1. single : Means it will select only one checkbox.
+											2. multiple : Means it will select perticuler checkboxes. with row attibute using pipe Oprator.	
+											NOTE: Date format is 28-11-2023 use this format otherwise tag will failed.												
+							<li>row : (mandatory) : This attribute used to provide the single and multiple value in pipe seprator in row selection.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="SelectAndSubmit" type='selectAndSubmit'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[This tag is Deprecated From 21x version and New tag is SelectAndSubmit6WSearch tag. Upload file to 3DDashboard using locator of element which will upload file to dashboard, use either path or id any one attribute. 
+						<ul>
+						<li>selection : (mandatory) : There are 2 types of selection: single and multiple, this lets us choose the type of selection.</li>
+						<li>id : (mandatory) : id(CSV) attribute is used to take value to choose from csv.</li>
+						<li>submitLabel : (mandatory) : Label of Submit button.</li>
+						<li>criteria : (optional) :specifies the criteria on which the selection will be made.The possible values for this attribute are:
+													1. text: 2. row-number: 
+						If you specify text, the text of the search result will be considered in the submission and in case of row-number, 
+						the row-number of the search result will be considered. Please note that row-number starts from 0. So to select the first result in the list,
+						you will have to specify 0.											
+					</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="AssertDate" type='assertDate'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[User can use assert for validation. The Assertion results are based on the comparison of Actual & Expected Results.
+						<ul>
+							<li>criteria : (mandatory) : there are 6 type of criteria : =, !=, &lt;, &gt;, &lt;=, &gt;=, On which criteria user wants to perform assertion needs to give in this.</li>
+							<li>toCompare : (mandatory) :posible value are :mins, hours, days, months, years on which user want to compare</li>
+							<li>dateDifference : (mandatory) :On which the user want the result of validation</li>
+							<li>locatorType : (optional when id/input is used) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>locatorExpression : (optional when id/input is used) : This attribute contains expression specific to locator type.</li>
+							<li>id : (optional if input used) : id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file.</li>
+							<li>input : (optional if id used) : attribute is used to provide a hard-coded value for input instead of using id attribute from csv file.</li>
+							<li>date2Id : (optional if input used) : date2Id(CSV) attribute is mapped to csv file column header.Input value should be taken from csv file. This attribute is for second Date</li>
+							<li>date2Input : (optional if id used) : attribute is used to provide a hard-coded value for input instead of using date2Id attribute from csv file.This attribute is for second Date</li>
+							<li>date2LocatorType : (optional when id/input is used) : There are 4 types of locator: id, cssselector,name and xpath which defines locator type.</li>
+							<li>date2LocatorExpression : (optional when id/input is used) : This attribute contains expression specific to locator type.</li>
+							<li>dateFormat  : (optional) : User have to provide the date format that is visible on UI. If user is not providing any dateFormat it will take the default dateFormat that is this dd/MM/yyyy.</li>
+							<li>date2Format : (optional) : User have to provide the date format that is visible on UI. If user is not providing any dateFormat it will take the default dateFormat that is this dd/MM/yyyy.</li>
+						</ul>]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="RefreshCurrentPage" type='emptyTag'>
+				<xs:annotation>
+					<xs:documentation><![CDATA[It will refresh the current page.]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+		</xs:choice>
+		<xs:attribute name="targetApplication" type="targetapplication" />
+	</xs:complexType>
+	<xs:element name="TestCase" type='TestCaseElements' />
+	</xs:schema>  

@@ -1,0 +1,4 @@
+escape delete bus "ERI_MarketOffering" "MO Object 006" "-";
+escape delete bus "ERI_MarketOffering" "MO_FGC_0001" "-";
+escape delete bus "ERI_MarketOffering" "MO Object 007" "-";
+escape delete bus "Products" "MOV_KRC_0001" "-";

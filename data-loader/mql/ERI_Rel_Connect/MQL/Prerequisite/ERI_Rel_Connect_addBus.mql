@@ -1,0 +1,4 @@
+escape add bus "ERI_MarketOffering" "MO_FGC_0001" "-" policy "Model" vault "eService Production" "current" "" "Attr1" "Val2 for 004";
+escape add bus "ERI_MarketOffering" "MO Object 006" "-" policy "" vault "eService Production" "current" "";
+escape add bus "Products" "MOV_KRC_0001" "-" policy "Product" vault "eService Production" "current" "" "Attr1" "";
+escape add bus "ERI_MarketOffering" "MO Object 007" "-" policy "" vault "eService Production" "current" "";

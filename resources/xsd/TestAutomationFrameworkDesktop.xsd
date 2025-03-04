@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://www.steepgraph.com" xmlns="https://www.steepgraph.com" elementFormDefault="qualified" >
+
+	<xs:simpleType name='nonemptystr'>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="boolean">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="true" />
+			<xs:enumeration value="false" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="actionName">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="click" />
+			<xs:enumeration value="doubleclick" />
+			<xs:enumeration value="rightclick" />
+			<xs:enumeration value="input" />
+			<xs:enumeration value="keydown" />
+			<xs:enumeration value="hover" />
+			<xs:enumeration value="keyUp" />
+			<xs:enumeration value="mousedown" />
+			<xs:enumeration value="mouseup" />
+			<xs:enumeration value="mousemove" />
+			<xs:enumeration value="clickandhold"/>
+			<xs:enumeration value="release"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="targetapplication">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="desktop" />
+			<xs:enumeration value="web" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="quardantValues">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="east" />
+			<xs:enumeration value="south" />
+			<xs:enumeration value="west" />
+			<xs:enumeration value="north" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="assertionCriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="image" />
+			<xs:enumeration value="text" />
+			<xs:enumeration value="color" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="key">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SPACE" />
+			<xs:enumeration value="ENTER" /> 
+			<xs:enumeration value="BACKSPACE" />
+			<xs:enumeration value="TAB" />
+			<xs:enumeration value="ESC" />
+			<xs:enumeration value="C_ESC" />
+			<xs:enumeration value="UP" />
+			<xs:enumeration value="C_UP" />
+			<xs:enumeration value="RIGHT" />
+			<xs:enumeration value="C_RIGHT" />
+			<xs:enumeration value="DOWN" />
+			<xs:enumeration value="C_DOWN" />
+			<xs:enumeration value="LEFT" />
+			<xs:enumeration value="C_LEFT" />
+			<xs:enumeration value="PAGE_UP" />
+			<xs:enumeration value="C_PAGE_UP" />
+			<xs:enumeration value="PAGE_DOWN" />
+			<xs:enumeration value="C_PAGE_DOWN" />
+			<xs:enumeration value="DELETE" />
+			<xs:enumeration value="C_DELETE" />
+			<xs:enumeration value="END" />
+			<xs:enumeration value="C_END" />
+			<xs:enumeration value="HOME" />
+			<xs:enumeration value="C_HOME" />
+			<xs:enumeration value="INSERT" />
+			<xs:enumeration value="C_INSERT" />
+			<xs:enumeration value="F1" />
+			<xs:enumeration value="C_F1" />
+			<xs:enumeration value="F2" />
+			<xs:enumeration value="C_F2" />
+			<xs:enumeration value="F3" />
+			<xs:enumeration value="C_F3" />
+			<xs:enumeration value="F4" />
+			<xs:enumeration value="C_F4" />
+			<xs:enumeration value="F5" />
+			<xs:enumeration value="C_F5" />
+			<xs:enumeration value="F6" />
+			<xs:enumeration value="C_F6" />
+			<xs:enumeration value="F7" />
+			<xs:enumeration value="C_F7" />
+			<xs:enumeration value="F8" />
+			<xs:enumeration value="C_F8" />
+			<xs:enumeration value="F9" />
+			<xs:enumeration value="C_F9" />
+			<xs:enumeration value="F10" />
+			<xs:enumeration value="C_F10" />
+			<xs:enumeration value="F11" />
+			<xs:enumeration value="C_F11" />
+			<xs:enumeration value="F12" />
+			<xs:enumeration value="C_F12" />
+			<xs:enumeration value="F13" />
+			<xs:enumeration value="C_F13" />
+			<xs:enumeration value="F14" />
+			<xs:enumeration value="C_F14" />
+			<xs:enumeration value="F15" />
+			<xs:enumeration value="C_F15" />
+			<xs:enumeration value="SHIFT" />
+			<xs:enumeration value="C_SHIFT" />
+			<xs:enumeration value="CTRL" />
+			<xs:enumeration value="C_CTRL" />
+			<xs:enumeration value="ALT" />
+			<xs:enumeration value="C_ALT" />
+			<xs:enumeration value="ALTGR" />
+			<xs:enumeration value="C_ALTGR" />
+			<xs:enumeration value="META" />
+			<xs:enumeration value="C_META" />
+			<xs:enumeration value="CMD" />
+			<xs:enumeration value="C_CMD" />
+			<xs:enumeration value="WIN" />
+			<xs:enumeration value="C_WIN" />
+			<xs:enumeration value="PRINTSCREEN" />
+			<xs:enumeration value="C_PRINTSCREEN" />
+			<xs:enumeration value="SCROLL_LOCK" />
+			<xs:enumeration value="C_SCROLL_LOCK" />
+			<xs:enumeration value="PAUSE" />
+			<xs:enumeration value="C_PAUSE" />
+			<xs:enumeration value="CAPS_LOCK" />
+			<xs:enumeration value="C_CAPS_LOCK" />
+			<xs:enumeration value="NUM0" />
+			<xs:enumeration value="C_NUM0" />
+			<xs:enumeration value="NUM1" />
+			<xs:enumeration value="C_NUM1" />
+			<xs:enumeration value="NUM2" />
+			<xs:enumeration value="C_NUM2" />
+			<xs:enumeration value="NUM3" />
+			<xs:enumeration value="C_NUM3" />
+			<xs:enumeration value="NUM4" />
+			<xs:enumeration value="C_NUM4" />
+			<xs:enumeration value="NUM5" />
+			<xs:enumeration value="C_NUM5" />
+			<xs:enumeration value="NUM6" />
+			<xs:enumeration value="C_NUM6" />
+			<xs:enumeration value="NUM7" />
+			<xs:enumeration value="C_NUM7" />
+			<xs:enumeration value="NUM8" />
+			<xs:enumeration value="C_NUM8" />
+			<xs:enumeration value="NUM9" />
+			<xs:enumeration value="C_NUM9" />
+			<xs:enumeration value="SEPARATOR" />
+			<xs:enumeration value="C_SEPARATOR" />
+			<xs:enumeration value="NUM_LOCK" />
+			<xs:enumeration value="C_NUM_LOCK" />
+			<xs:enumeration value="ADD" />
+			<xs:enumeration value="C_ADD" />
+			<xs:enumeration value="MINUS" />
+			<xs:enumeration value="C_MINUS" />
+			<xs:enumeration value="MULTIPLY" />
+			<xs:enumeration value="C_MULTIPLY" />
+			<xs:enumeration value="DIVIDE" />
+			<xs:enumeration value="C_DIVIDE" />
+			<xs:enumeration value="DECIMAL" />
+			<xs:enumeration value="C_DECIMAL" />
+			<xs:enumeration value="CONTEXT" />
+			<xs:enumeration value="C_CONTEXT" />
+			<xs:enumeration value="NEXT" />
+			<xs:enumeration value="C_NEXT" />
+			<xs:enumeration value="cMax" />
+			<xs:enumeration value="cMin" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="wheeldirection">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="up" />
+			<xs:enumeration value="down" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="scrolltype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="wheel" />
+			<xs:enumeration value="key" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="modifier">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ALT" />
+			<xs:enumeration value="CMD" />
+			<xs:enumeration value="CTRL" />
+			<xs:enumeration value="META" />
+			<xs:enumeration value="SHIFT" />
+			<xs:enumeration value="WIN" />
+			<xs:enumeration value="ALTGR" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="advanceSearchType">
+	    <xs:restriction base="xs:string">
+		    <xs:enumeration value="name" />
+		    <xs:enumeration value="title" />
+		    <xs:enumeration value="type" />
+	    </xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='include'>
+		<xs:attribute name="filepath" type="nonemptystr" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name='readXML'>
+		<xs:attribute name="id" type="nonemptystr" use="required"/>
+		<xs:attribute name="unziplocation" />
+		<xs:attribute name="unzip" type="boolean" use="required" />
+		<xs:attribute name="fromBrowserDownloadLocation" type="boolean" use="required"/>
+		<xs:attribute name="downloadFileExt" type="nonemptystr" />
+		<xs:attribute name="regexExpr"  type="nonemptystr" />
+		<xs:attribute name="deleteFile"  type="boolean" />
+	</xs:complexType>
+	
+	<xs:complexType name='assertXMl'>
+		<xs:attribute name="refid" type="nonemptystr" use="required" />
+		<xs:attribute name="criteria" type="criteriaCondition" use="required" />
+		<xs:attribute name="xpathExpression" type="nonemptystr"/>
+		<xs:attribute name="match" type="matchCondition" use="required" />
+		<xs:attribute name="id"  type="nonemptystr" />
+		<xs:attribute name="regexExpr"  type="nonemptystr" />
+		<xs:attribute name="deleteFile"  type="boolean" />
+	</xs:complexType>
+	
+	<xs:simpleType name="criteriaCondition">
+		<xs:restriction base="xs:string">
+		    <xs:enumeration value="none" />
+			<xs:enumeration value="exist" />
+			<xs:enumeration value="notexist" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="matchCondition">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="full" />
+			<xs:enumeration value="partial" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name='sendKey'>
+		<xs:attribute name="key" type="nonemptystr" use="required" />
+		<xs:attribute name="locatorImage" type="nonemptystr"/>
+	</xs:complexType>
+
+	<xs:complexType name='launchapplication'>
+		<xs:attribute name="command" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='login'>
+		<xs:attribute name="userName" type="nonemptystr" use="required" />
+		<xs:attribute name="password" type="nonemptystr" use="required" />
+		<xs:attribute name="platformName" type="nonemptystr" />
+		<xs:attribute name="platformNameImage" type="nonemptystr" />
+		<xs:attribute name="timeOut" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='click'>
+		<xs:attribute name="locatorImage" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='filechooser'>
+		<xs:attribute name="locatorImage" type="nonemptystr" use="required" />
+		<xs:attribute name="fileNames" type="nonemptystr" use="required" />
+		<xs:attribute name="filePath" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='opencompass'>
+		<xs:attribute name="quadrant" type="quardantValues"/>
+		<xs:attribute name="appNameImage" type="nonemptystr" use="required" />
+		<xs:attribute name="appName" type="nonemptystr" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name='selectcheckbox'>
+		<xs:attribute name="checkBoxRegionImage" type="nonemptystr" use="required" />
+		<xs:attribute name="checkBoxText" type="nonemptystr" use="required" />
+		<xs:attribute name="checkBoxImage" type="nonemptystr" />
+		<xs:attribute name="checkedCheckBoxImage" type="nonemptystr" />
+		<xs:attribute name="l" type="xs:string" />
+		<xs:attribute name="r" type="xs:string" />
+		<xs:attribute name="t" type="xs:string" />
+		<xs:attribute name="b" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name='assert'>
+		<xs:attribute name="criteria" type="assertionCriteria" use="required" />
+		<xs:attribute name="locatorImage" type="nonemptystr" />
+		<xs:attribute name="timeout" type="nonemptystr" />
+		<xs:attribute name="accuracy" type="nonemptystr" />
+		<xs:attribute name="l" type="xs:string" />
+		<xs:attribute name="r" type="xs:string" />
+		<xs:attribute name="t" type="xs:string" />
+		<xs:attribute name="b" type="xs:string" />
+		<xs:attribute name="input" type="xs:string" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="colorDifference" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name='action'>
+		<xs:attribute name="refid" type="nonemptystr" />
+		<xs:attribute name="name" type="actionName" use="required" />
+		<xs:attribute name="locatorImage" type="nonemptystr" />
+		<xs:attribute name="value" type="nonemptystr" />
+	</xs:complexType>
+	<xs:complexType name='findelement'>
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="locatorImage" type="nonemptystr" />
+		<xs:attribute name="text" type="nonemptystr" />
+		<xs:attribute name="l" type="xs:string" />
+		<xs:attribute name="r" type="xs:string" />
+		<xs:attribute name="t" type="xs:string" />
+		<xs:attribute name="b" type="xs:string" />
+		<xs:attribute name="ignoreColor" type="xs:string" />
+		<xs:attribute name="accuracy" type="xs:string" />
+		<xs:attribute name="Threshold" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name='clickelement'>
+		<xs:attribute name="locatorImage" type="nonemptystr" use="required" />
+		<xs:attribute name="locatorText" type="nonemptystr" />
+		<xs:attribute name="l" type="xs:string" />
+		<xs:attribute name="r" type="xs:string" />
+		<xs:attribute name="t" type="xs:string" />
+		<xs:attribute name="b" type="xs:string" />
+		<xs:attribute name="accuracy" type="xs:string" />
+		<xs:attribute name="wait" type="xs:string" />
+		<xs:attribute name="afterTime" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name='wait'>
+		<xs:attribute name="time" type="nonemptystr" use="required" />
+		<xs:attribute name="locatorImage" type="nonemptystr" />
+		<xs:attribute name="l" type="xs:string" />
+		<xs:attribute name="r" type="xs:string" />
+		<xs:attribute name="t" type="xs:string" />
+		<xs:attribute name="b" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name='inputtext'>
+		<xs:attribute name="locatorImage" type="nonemptystr" use="required" />
+		<xs:attribute name="input" type="nonemptystr"/>
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="l" type="xs:string" />
+		<xs:attribute name="r" type="xs:string" />
+		<xs:attribute name="t" type="xs:string" />
+		<xs:attribute name="b" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name='scroll'>
+		<xs:attribute name="locatorImage" type="xs:string" use="required" />
+		<xs:attribute name="steps" type="xs:integer" use="required" />
+		<xs:attribute name="direction" type="wheeldirection" use="required" />
+		<xs:attribute name="stepDelay" type="xs:integer" default="50" />
+		<xs:attribute name="type" type="scrolltype" default="wheel" />
+	</xs:complexType>
+
+	<xs:simpleType name="ifCriteria">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="text" />
+			<xs:enumeration value="visible" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='if'>
+		<xs:attribute name="id" type="nonemptystr"/>
+		<xs:attribute name="criteria" type="ifCriteria" use="required" />
+		<xs:attribute name="condition" type="nonemptystr" use="required"/>
+		<xs:attribute name="locatorImage" type="nonemptystr" />
+		<xs:attribute name="refId" type="nonemptystr" />
+		<xs:attribute name="timeOut" type="nonemptystr" />
+		<xs:attribute name="accurecy" type="nonemptystr" />
+	</xs:complexType>
+
+	<xs:complexType name='globalsearch'>
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="type" type="xs:string" />
+		<xs:attribute name="searchtype" type="xs:string" />
+        <xs:attribute name="advanceSearchType" type="advanceSearchType" />
+        <xs:attribute name="timeout" type="nonemptystr" />
+		</xs:complexType> 
+
+	<xs:complexType name='registerobject'>
+		<xs:attribute name="locatorImage" type="nonemptystr" use="required" />
+		<xs:attribute name="id" type="nonemptystr" use="required" />
+		<xs:attribute name="l" type="xs:string" />
+		<xs:attribute name="r" type="xs:string" />
+		<xs:attribute name="t" type="xs:string" />
+		<xs:attribute name="b" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name='emptyTag'>
+	</xs:complexType>
+	
+	<xs:complexType name='dragAndDrop'>
+		<xs:attribute name="sourceRefId " type="xs:string" />
+		<xs:attribute name="sourceLocatorImage " type="xs:string" />
+		<xs:attribute name="targetRefId" type="xs:string" />
+		<xs:attribute name="targetLocatorImage" type="xs:string" />
+		<xs:attribute name="targetOffset" type="xs:string" />
+	</xs:complexType>
+	
+	<xs:complexType name='TestCaseElements'>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+		
+		<xs:element name="OpenCompassApp" type='opencompass'>
+				<xs:annotation>
+				<xs:documentation><![CDATA[With the help of this tag, user could click any of the given Compass Quadrant and open the any of the required Compass App from it by using <b>quadrant</b>, <b>appNameImage</b>, <b>appName</b> attributes. User must provide <b>appNameImage</b> and <b>appName</b> in order to open the application.
+				<li><b>quadrant</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the quadrant, from which user needs to launch the required application. The possible values are north, south, east and west. Default value is west.</li>
+				<li><b>appNameImage</b><b>:</b> <b>(Mandatory)</b><b>:</b>This attribute refers to the specific image of appname, which user needs to launch.need to give the image of app which user want to search.</li>
+				<li><b>appName</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to the specific text as name of the required app which user wants to open.</li>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+		
+		<xs:element name="Action" type='action'>
+			<xs:annotation>
+				<xs:documentation>
+				<![CDATA[With the help of this tag, user could perform a given action on element such as click, doubleclick, rightclick etc. by using <b>refid, name, locatorimage and value</b>attributes, but use of refid is mandatory even if FindElement is used or not . If not then use locatorImage in the action tag to specify the region.
+				<ul>
+				<li><b>refid</b><b>:</b><b>(Mandatory if locatorimage is not present)</b><b>:</b>This attribute refers to the refid, which user needs to get the value of id from findelement tag.But  use can use locatorImage in the action tag if FindElement not used vefore the tag.</li>
+				<li><b>name</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to Action name, user wants to perform such as click, doubleclick, rightclick, input, keydown, keyup, hover, mousedown, mouseup, mousemove</li>
+				<li><b>locatorImage</b><b>:</b><b>(Optional for KeyUp and KeyDwon)</b>(Mandatory if refid is not present)</b><b>:</b>This attribute refers to specific image of an element, on which user wants to perform an action. This attribute is optional and could be used, in case refid used but FindElement not used before the action tag.</li>
+				<li><b>value</b><b>:</b><b>(Optional)</b><b>:</b>this attribute is used when user chose input ,keyup , keydown as name attribute , then this attribute is mandatory.This attribute refers to text/modifier keys (Key.ALT, Key.CMD, Key.CTRL, Key.META, Key.SHIFT, Key.WIN, Key.ALTGR)</li>
+				</ul>]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+		<xs:element name="Scroll" type='scroll'>
+			<xs:annotation>
+				<xs:documentation>
+				<![CDATA[Performs scroll event as per given inputs.
+				<ul>
+			    <li><b>locatorImage</b><b>:</b><b>(Mandatory)</b><b>:</b> Image file name, it specify that from where scroll should start. If not specified then scroll will start from current mouse position</li> 
+			    <li><b>steps</b><b>:</b><b>(Mandatory)</b><b>:</b> Specifies the number of steps/count of scroll to perform</li>
+			    <li><b>direction</b><b>:</b><b>(Mandatory)</b><b>:</b> Specifies the scroll direction. Default value is down. Possible values are up and down</li>
+			    <li><b>stepDelay</b><b>:</b><b>(Optional)</b><b>:</b> Specifies the delay time in milliseconds between two scroll steps. Default value is 50</li>
+			    <li><b>type</b><b>:</b><b>(Optional)</b><b>:</b> Specifies the scroll type. Default value is wheel. Possible values are wheel and key</li>
+				</ul>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+		<xs:element name="InputText" type='inputtext'>
+			<xs:annotation>
+				<xs:documentation>
+				<![CDATA[With help of this tag, user could insert a text into input field (element) identified using given <b>locatorImage</b>, <b>id</b>, <b>input</b>, element co-ordinates <b>(l,r,t,b)</b> attributes.Input value is taken from input or id attribute.But for this tag need to use either id or input attribute and it is mandatory.
+				<ul>
+				<li><b>locatorImage</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to image captured, specific to the element(textfield), for which user needs to provide input/text. The image captured should always have .png extension</li>
+				<li><b>input</b><b>:</b><b>(Optional if id is present)</b><b>:</b>This attribute refers to the text which needs to be entered by the user in textfield, for Image available in locatorImage attribute. If input not used then need to use id and this is mandatory</li>
+				<li><b>id</b><b>:</b><b> (Optional if input is present)</b><b>:</b>This attribute refers to the text, which needs to be searched by the user and the same should be provided in csv. This attribute id is mapped to csv column header. User should provide the column header in the script, wherever, he needs to provide the reference of this. If input not used then need to use id and this is mandatory</li>
+				<li><b>l(left)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the left co-ordinates of the elements, for which text needs to be entered. This needs to be entered by the user manually.</li>
+				<li><b>r(right)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the right co-ordinates of the elements, for which text needs to be entered. This needs to be entered by the user manually.</li>
+				<li><b>t(top)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the top co-ordinates of the elements, for which text needs to be entered. This needs to be entered by the user manually.</li>
+				<li><b>b(bottom)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the bottom co-ordinates of the elements, for which text needs to be entered. This needs to be entered by the user manually.</li>
+				</ul>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+		<xs:element name="LaunchApplication"
+			type='launchapplication'>
+			<xs:annotation>
+				<xs:documentation>
+					<![CDATA[With the help of this tag, user should be able to launch the required application using <b>command</b> attribute.
+				<ul>
+				<li><b>command</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to application path or a command, in order to launch application. Example: "command='C:\Program Files\Dassault Systemes\B421\win_b64\code\bin\CATSTART.exe'" </li>
+				</ul>]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+		<xs:element name="Login" type='login'>
+			<xs:annotation>
+				<xs:documentation>
+					<![CDATA[With the help of this tag, user should be able to login to 3DX Native Apps, by entering <b>username</b> , <b>password</b> , <b>platformName</b> , <b>platformNameImage</b>attributes. Before using login tag, we need to logout from 3DX Native Application.
+				<ul>
+				<li><b>userName</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to the valid username which needs to be entered in the username field, in order to login to 3DX Native Application.</li>
+				<li><b>password</b><b>:</b><b>(Mandatory)</b><b>:</b>(encrypted)This attribute refers to the valid password which needs to be entered in the password field, in order to login to 3DX Native Application.</li>
+				<li><b>platformName</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the valid platformName in platformNameImage, in order to login to 3DX Native Application.</li>
+				<li><b>platformNameImage</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the valid platformName with image, in order to login to 3DX Native Application.From platformNameImage, platformName will be verified.</li>
+				<li><b>timeout</b><b>:</b><b>(Optional)</b><b>:</b>This attribute is used as wait and after that specific second if the image is not found then it will thow an error.Value should be in seconds Default value will be taken from "sg-tas.execution.step.timeout.pollinginterval" of SG_TAS.properties.Recomended value is 3.</li>
+				</ul>
+				</ul>]]>
+				</xs:documentation>
+			</xs:annotation>    
+		</xs:element>
+		
+		<xs:element name="ClickElement" type='clickelement'>
+			<xs:annotation>
+				<xs:documentation>
+					<![CDATA[With help of this tag, user could click on an element, using given <b>locatorImage</b>, <b>locatorText</b>, <b>l,r,t,b</b> attributes.
+				<ul>
+				<li><b>locatorImage</b><b>:</b><b>(Mandatory)</b><b>:</b></b>This attribute refers to image captured, specific to the element, which needs to be clicked by the user. The image captured should always have .png extension</li>
+				<li><b>locatorText</b><b>:</b><b>(Optional)</b>:</b>This attribute refers to the text value, on the locatorImage.Use this attribute for exact match.</li>
+				<li><b>l(left)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the left co-ordinates of the elements, which needs to be clicked. This needs to be entered by the user manually.</li>
+				<li><b><b>r(right)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the right co-ordinates of the elements, which needs to be clicked. This needs to be entered by the user manually.</li>
+				<li><b>t(top)</b><b>:</b><b> (Optional)</b><b>:</b>This attribute refers to the top co-ordinates of the elements, which needs to be clicked. This needs to be entered by the user manually.</li>
+				<li><wait)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute is used to wait to find the image in the screen. This will only applicable when accuracy not used. it takes value in Mili seconds and default value will be taken from sg-tas.execution.step.timeout key of SG_TAS.properties</li>
+				<li><b>accuracy </b><b>:</b><b>(Optional)</b>:</b>Possible values are from 1 to 99 as the image will be get based on that accuracy.if accuracy  not defined & (locatorImage & text ) defined then default  accuracy  =0.00001. if accuracy not defined & locatorImage defined  but  & text not defined then default  accuracy  =0.70.
+				if accuracy not defined & (locatorImage & text ) not defined then default  accuracy  =0.00001.</li>
+				<li>afterTime</b><b>:</b><b>(Optional)</b><b>:</b>Possible values - pass, fail. Whether to pass or fail the test case if element not found after time. Default value is fail.</li>
+				</ul>]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+	
+			<xs:element name="FileChooser" type='filechooser'>
+			<xs:annotation>
+				<xs:documentation>
+				<![CDATA[With the help of this tag, user should be able to open specified file. User could also open multiple files, if filepath remains same for all the files. User could enter multiple filenames separated by pipe '|' symbol.
+				<ul>
+				<li><b>fileNames</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to the specified filename/filenames(along with their extension), which needs to be provided by the user, in order to open the required file's.</li>
+				<li><b>locatorImage</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to specific image from where user needs to click to open default file chooser window to choose the file.</li>
+				<li><b>filePath</b><b>:</b><b>(Mandatory)</b><b>:</b>This refers to the path, where files are placed, which user wants to open. for example :"filePath=D:\AVISHEKH\SG-TAS-2.1\testsuites\EXACTORAPROXIMATE\Images" </li>
+				</ul>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+
+		<xs:element name="Wait" type='wait'>
+			<xs:annotation>
+			<xs:documentation>
+				<![CDATA[With the help of this tag, user could pause the execution of test case for given <b>time</b>. Using Waits, we could resolve multiple issues which might occur in our application while testing like Element didn't appeared due to more time taken by screen to load or screen was not loaded properly etc.
+				<ul>
+				<li><b>time</b><b>:</b><b>(Mandatory)</b><b>:</b>The time attribute defines wait interval. User must pass time in milliseconds.</li>
+				<li><b>locatorImage</b><b>:</b><b>(Optional)</b><b>:</b></b>This attribute used if user wants dynamic wait and it is  refers to image captured, specific to the element, which needs to be clicked by the user. The image captured should always have .png extension</li>
+				<li><b>l(left)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the left co-ordinates of the elements, which needs to be clicked. This needs to be entered by the user manually.</li>
+				<li><b><b>r(right)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the right co-ordinates of the elements, which needs to be clicked. This needs to be entered by the user manually.</li>
+				<li><b>t(top)</b><b>:</b><b> (Optional)</b><b>:</b>This attribute refers to the top co-ordinates of the elements, which needs to be clicked. This needs to be entered by the user manually.</li>
+				<li><b>b(bottom)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the bottom co-ordinates of the elements, which needs to be clicked. This needs to be entered by the user manually.</li>
+				</ul>]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+		<xs:element name="FindElement" type='findelement'>
+			<xs:annotation>   
+				<xs:documentation>
+				<![CDATA[With help of this tag, user could find Element which needs to be searched, using given <b>locatorImage</b>, <b>id</b>, <b>text</b> , element coordinates <b>(l,r,t,b)</b> attributes.
+				 if locatorImage attribute is not used then it will goes for the whole screen for that given text if text attribute used..
+				<ul>
+				<li><b>locatorImage</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to image captured, specific to the element, which needs to be searched by the user. The image captured should always have .png extension. if this attribute is not used then it will goes for the whole screen.</li>
+				<li><b>id</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to the reference id of Image available in locatorImage attribute. User could identify element for once, with FindElement tag and re-use it again for the other tags with the help of id attribute.</li>
+				<li><b>text</b><b>:</b><b>(Optional)</b>:</b>This attribute refers to the text value, present on image.</li>
+				<li><b>l(left)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the left co-ordinates of the elements, which needs to be clicked. This needs to be entered by the user manually.</li>
+				<li><b>r(right)</b><b>:</b><b>(Optional)</b>:</b>This attribute refers to the right co-ordinates of the elements, which needs to be clicked. This needs to be entered by the user manually.</li>
+				<li><b>t(top)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the top co-ordinates of the elements, which needs to be clicked. This needs to be entered by the user manually.</li>
+				<li><b>b(bottom)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the bottom co-ordinates of the elements, which needs to be clicked. This needs to be entered by the user manually.</li>
+				<li><b>ignoreColor</b><b>:</b><b>(Optional)</b>:</b>This attribute will be used to ignore certain color to convert it to transparent and this will only applicable only if locatorImage is used.</li>
+				<li><b>accuracy</b><b>:</b><b>(Optional)</b>:</b>Possible values are from 1 to 99 as the image will be get based on that accuracy.if accuracy  not defined and ignoreColor and text used then  accuracy will be set to 70. if ignoreColor defined but text not defined then it will be set to 95.</li>
+				<li><b>Threshold</b><b>:</b><b>(Optional)</b>:</b>This attribute will only used if ignoreColor and locatorImage used.possible values will be 0 to 100 and default value is 15</li>
+				</ul>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+
+			<xs:element name="SelectCheckBox" type='selectcheckbox'>
+			<xs:annotation>
+				<xs:documentation>
+				<![CDATA[With the help of this tag, user should be able to select or unselect a checkbox from multiple checkboxes or multiple checkboxes for any given region.checkBoxRegionImage and checkBoxText are mandatory attribute.checkedCheckBoxImage and checkBoxImage are mandatory but you need to used any one of these two attribute as it is defined that the check box is already checked or not.
+				<ul>
+				<li><b>checkBoxRegionImage</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to specific region of element/checkbox, from which user wants to select the checkbox.</li>
+				<li><b>checkBoxText</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to text value of checkBoxRegionImage and this text is used to refer the specific check box , which user wants to select.</li>
+				<li><b>checkBoxImage</b><b>:</b><b>(Optional if checkedCheckBoxImage is present)</b><b>:</b>This attribute refers to checkbox image , which user wants to select.</li>
+				<li><b>checkedCheckBoxImage</b><b>:</b><b>(Optional if checkBoxImage is present)</b><b>:</b>This attribute refers to checkbox image , which user wants to unselect. as it is aleady selected</li>
+				<li><b>l(left)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the left co-ordinates of the elements, which is specified in locatorImage. This needs to be entered by the user manually.Default value is 50</li>
+				<li><b>r(right)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the right co-ordinates of the elements, which is specified in locatorImage. This needs to be entered by the user manually.Default value is 50</li>
+				<li><b>t(top)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the top co-ordinates of the elements,which is specified in locatorImage. This needs to be entered by the user manually.Default value is 50</li>
+				<li><b>b(bottom)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the bottom co-ordinates of the elements, which is specified in locatorImage. This needs to be entered by the user manually.Default value is 50</li>
+				</ul>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+		<xs:element name="Post" type='emptyTag'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[This tag indicate the beginning of post process section of test case. This should be at the end of test case.]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+		<xs:element name="EndPost" type='emptyTag'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[This tag indicate the end of post process section of test case]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+				
+		<xs:element name="Assert" type='assert'>
+			<xs:annotation>
+				<xs:documentation>
+				<![CDATA[With the help of this tag, user could assert values for validation.
+				  The Assertion results are based on the comparison of Actual & Expected Results.For assert when we give an image, it will search for the image & return the image for the given image with the Highest Similarity.
+				  If we give an image  & text, it will return an image for the given image with the Highest Similarity and get the text from that image and aslo it will highlight all matching images for the given accuracy.
+				  If only text is given , it will return the text from the whole screen.it works as contains not exact equals.
+				<ul>
+				<li><b>criteria</b><b>:</b><b>(Mandatory)</b> <b>:</b>This attribute refers to the value/criteria, based on which the Actual and Expected values are compared. The possible values for this could be image, text or color.</li>
+				<li><b>locatorImage</b><b>:</b><b>(Mandatory)</b> <b>:</b>This attribute refers to specific image of an element, which needs to be validated based on the assertion applied.</li>
+				<li><b>timeout</b><b>:</b><b>(Mandatory if criteria=color)</b><b>:</b>This refers to the time limit provided by the user to check assertion applied. Only applicable for criteria equals to color.Value should be in seconds</li>
+				<li><b>input</b><b>:</b><b>(Optional if id used)</b><b>:</b>This attribute refers to the expected value of text which needs to be validated from the given image and it would be used if and only if criteria value is specified as text.</li>
+				<li><b>colorDifference</b><b>:</b><b>(Mandatory if criteria=color)</b>:</b>This attribute refers to the expected value of color which needs to be validated and it would be used if and only if criteria value is specified as color.</li>
+				<li><b>accuracy </b><b>:</b><b>(Optional if criteria=color)</b>:</b>Possible values are from 1 to 99 as the image will be get based on that accuracy.if accuracy  not defined & (locatorImage & text ) defined then default  accuracy  =0.00001. if accuracy not defined & locatorImage defined  but  & text not defined then default  accuracy  =0.70.
+				if accuracy not defined & (locatorImage & text ) not defined then default  accuracy  =0.00001.</li>
+				<li><b>l(left)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the left co-ordinates of the elements, which is specified in locatorImage. This needs to be entered by the user manually.It extend the image area</li>
+				<li><b>r(right)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the right co-ordinates of the elements, which is specified in locatorImage. This needs to be entered by the user manually.It extend the image area</li>
+				<li><b>t(top)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the top co-ordinates of the elements,which is specified in locatorImage. This needs to be entered by the user manually.It extend the image area</li>
+				<li><b>b(bottom)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the bottom co-ordinates of the elements, which is specified in locatorImage. This needs to be entered by the user manually.It extend the image area</li>
+				</ul>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+			<xs:element name="SendKeys" type='sendKey'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[With help of this tag, user could enter text in form of keystrokes sent, to an element in an application using given <b>key</b> attribute.
+				<ul>
+				<li><b>key</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to text which needs to be entered by user for an element, in form of keystrokes.</li>
+				<li><b>locatorImage</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to specific image of the element for which user wants to send keys.</li>
+				</ul>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+		<xs:element name="Include" type="include">
+			<xs:annotation>
+				<xs:documentation><![CDATA[Include another test case xml in current xml using <b>filepath</b> attribute
+				<ul>
+				<li><b>filepath</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to path of the xml file, which user wants to include in current xml file.</li>
+				</ul>]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+		
+		<xs:element name="ReadXML" type="readXML">
+			<xs:annotation>
+				<xs:documentation><![CDATA[ReadXML another test case to UnZip in current zipfile from browserLocation or manually location.
+				<ul>
+				<li>id : (mandatory) : Path of the building block (zip file) present in testsuites.</li>
+				<li>fromBrowserDownloadLocation : Path of the building block (zip file) present in testsuites.</li>
+				<li>unZipLocation  :  (mandatory) : Path/Dir of the zip file where it has been extracted. unzip file folder.</li>
+				<li>unzip : (mandatory) : Boolean Check for file to unZip</li>
+				<li>downloadFileExt : Provide extension of file of Unzip File i.e xml/pdf/word</li>
+				<li>regexExpr : Provide regexExpr only when xml file contains regular expression.</li>
+				<li>deleteFile : Default value is true, true or null, false value for delete and undelete zip and xml file respectively.</li>
+				</ul>]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+			
+		<xs:element name="AssertXML" type="assertXMl">
+			<xs:annotation>
+				<xs:documentation><![CDATA[Include another test case xml in current xml.
+				<ul>
+				<li>refid  : (mandatory) : value is same as id key for XML extracted file.</li>
+				<li>id : (mandatory) : comparison value for xpath Expression.</li>
+				<li>criteria  : (mandatory) : Value must be exist, notexist, none depending match is partial gets value, null value and match is full respectively.</li>
+				<li>match  : (mandatory) : Either match is full or partial depending on validation of XML.</li>
+				<li>xpathExpression  :  Provide xpath for which value must be retrive.</li>
+				<li>regexExpr : Provide regexExpr only when xml file contains regular expression.</li>
+				<li>deleteFile : Default value is false, true or null, false value for delete and undelete zip and xml file respectively.</li>
+				</ul>]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+			
+			<xs:element name="GlobalSearch" type='globalsearch'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[With the help of this tag, user should be able to search object in 3DX Native Application.
+				<ul>
+				<li><b>id</b><b>:</b><b> (Mandatory)</b><b>:</b>This attribute refers to the text, which needs to be searched by the user and the same should be provided in csv. This attribute id is mapped to csv column header. User should provide the column header in the script, wherever, he needs to provide the reference of this.</li>
+				<li><b>type</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to type from global search type. The default type value for this attribute is All.</li>
+				<li><b>searchtype</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to search type, whether user wants to perform normal search or Advanced search. The possible values for this attribute is either Search or Advance Search. The default Search Type is Search.</li>
+				<li><b>advanceSearchType</b><b>:</b><b>(Optional)</b><b>:</b>This attribute is only applicable when SearchType is advance. possible values are name, type and title, Default value is name</li>
+				<li><b>timeout</b><b>:</b><b>(Optional)</b><b>:</b>This refers to the time limit provided by the user to check applied image please provide values in seconds.all default time out will be taken from the SG_TAS.properties key "sg-tas.execution.step.timeout</li>
+				</ul>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+
+			<xs:element name="RegisterObject" type='registerobject'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[With the help of this tag, user should be able to register an object’s name in a property file or in database by given <b>locatorImage, id</b> and <b>elements co-ordinates(i.e. l,r,t and b) used to extend the image area</b> attributes.
+				<ul>
+				<li><b>locatorImage</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to specific image of an element, which needs to be registered.</li>
+				<li><b>id</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to the Key, used store the register the data in objectregister.properties.</li>
+				<li><b>l(left)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the left co-ordinates of the elements, which needs to be registered. This needs to be entered by the user manually.</li>
+				<li><b>r(right)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the right co-ordinates of the elements, which needs to be registered. This needs to be entered by the user manually.</li>
+				<li><b>t(top)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the top co-ordinates of the elements,which needs to be registered. This needs to be entered by the user manually.</li>
+				<li><b>b(bottom)</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to the bottom co-ordinates of the elements, which needs to be registered. This needs to be entered by the user manually.</li>
+				</ul>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+			<xs:element name="IF" type='if'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[With the help of this tag, user should be able to check condition(i.e. based on text comparison and visibility) with help of <b>IF</b> tag and multiple conditions with help of <b>IFELSE</b> tag in true false series.refId and LocatorImage both are optional attributes but you need to use one of these two attributes at a time.
+				<ul>
+				<li><b>id</b><b>:</b><b>(Mandatory only if criteria = text)</b><b>:</b>This attribute refers to the text value of the element, which user need to compare.</li>
+				<li><b>criteria</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to the specified condition, which needs to be checked. The possible values of the criteria are visible or text.</li>
+				<li><b>condition</b><b>:</b><b>(=,!=)(Mandatory)</b><b>:</b>This attribute refers to the conditional operator, based on which condition would be verified.</li>
+				<li><b>refid</b><b>:</b><b>(Optional if locatorImage is present)</b><b>:</b>This refers to the refId, which user needs to get from findelement tag or else locatorImage of the element.</li>
+				<li><b>locatorImage</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to specific image of the element for which user needs to verify the condition. if refId or locatorImage not define then it will work for whole screen but for this criteria should be text</li>
+				<li><b>accuracy </b><b>:</b><b>(Optional)</b>:</b>Possible values are from 1 to 99 as the image will be get based on that accuracy.if accuracy  not defined & (locatorImage & text ) defined then default  accuracy  =0.00001. if accuracy not defined & locatorImage defined  but  & text not defined then default  accuracy  =0.70.
+				if accuracy not defined & (locatorImage & text ) not defined then default  accuracy  =0.00001.</li>
+				<li><b>timeout</b><b>:</b><b>(Optional)</b><b>:</b>This refers to the time limit provided by the user to search the element and after that given time it will fail if element not found. Only applicable when accuracy not defined but locatorImage defined.Takes value in seconds and default value will be taken from sg-tas.execution.step.timeout.pollinginterval</li>
+				</ul>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+		<xs:element name="ELSEIF" type='if'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[With the help of this tag, user should be able to check condition(i.e. based on text comparison and visibility) with help of <b>ELSEIF</b> tag and multiple conditions with help of <b>IF...ELSE</b> tag in true false series.refId and LocatorImage both are optional attributes but you need to use one of these two attributes at a time.
+				If you used both attribute then refId will be used only & LocatorImage will not be used.
+				To use refId in this tag , user need to use finfelement tag before this tag & the Id of findElement will be referred to as refId in this tag.
+				if we took whole screen in findElement then it will be also applicable for this tags.
+				<ul>
+				<li><b>id</b><b>:</b><b>(Mandatory only if criteria = text)</b><b>:</b>This attribute refers to the text value of the element, which user need to compare.</li>
+				<li><b>criteria</b><b>:</b><b>(Mandatory)</b><b>:</b>This attribute refers to the specified condition, which needs to be checked. The possible values of the criteria are visible or text.</li>
+				<li><b>condition</b><b>:</b><b>(=,!=)(Mandatory)</b><b>:</b>This attribute refers to the conditional operator, based on which condition would be verified.</li>
+				<li><b>refid</b><b>:</b><b>(Optional if locatorImage is present)</b><b>:</b>This refers to the refId, which user needs to get from findelement tag or else locatorImage of the element.</li>
+				<li><b>locatorImage</b><b>:</b><b>(Optional)</b><b>:</b>This attribute refers to specific image of the element for which user needs to verify the condition.if refId or locatorImage not define then it will work for whole screen but for this criteria should be text</li></li>
+				<li><b>accuracy </b><b>:</b><b>(Optional)</b>:</b>Possible values are from 1 to 99 as the image will be get based on that accuracy.if accuracy  not defined & (locatorImage & text ) defined then default  accuracy  =0.00001. if accuracy not defined & locatorImage defined  but  & text not defined then default  accuracy  =0.70.
+				if accuracy not defined & (locatorImage & text ) not defined then default  accuracy  =0.00001.</li>
+				<li><b>timeout</b><b>:</b><b>(Optional)</b><b>:</b>This refers to the time limit provided by the user to search the element and after that given time it will fail if element not found. Only applicable when accuracy not defined but locatorImage defined. Takes value in seconds and default value will be taken from sg-tas.execution.step.timeout.pollinginterval</li>
+				</ul>
+ 				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+			
+		<xs:element name="ELSE" type='emptyTag'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[This is similar to else condition in programming]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+
+		<xs:element name="ENDIF" type='emptyTag'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[This tag indicate the end of if tag. This tag will used to define bound of if statement.]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+			
+		<xs:element name="DragAndDrop" type='dragAndDrop'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[With the help of this tag, user should be able to drag and drop the element.use findelement tag Id as a refid for sourceRefId or targetRefId.
+				<ul>
+				<li><b>sourceRefId</b><b>:</b><b>(Optional if sourceLocatorImage is present)</b><b>:</b>This attribute refers to the Id used in FindElement tag to get the source region.</li>
+				<li><b>sourceLocatorImage</b><b>:</b><b>(Optional if sourceRefId is present)</b><b>:</b>This attribute refers to source Image name to get the source region</li>
+				<li><b>targetRefId</b><b>:</b><b>(Optional if targetLocatorImage or targetOffset is present)</b><b>:</b>This attribute refers to the Id used in FindElement tag to get the target region.</li>
+				<li><b>targetLocatorImage</b><b>:</b><b>(Optional if targetRefId or targetOffset is present)</b><b>:</b>This attribute refers to Target Image name to get the target region.</li>
+				<li><b>targetOffset</b><b>:</b><b>(Optional if targetLocatorImage or targetRefId is present)</b><b>:</b>x and y offset value of target position/element with respect to center of the source. It should be provided in string format "x,y", where x and y are integer values</li>
+				</ul>
+				]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+		
+		<xs:element name="OptionalStart" type='emptyTag'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[Starting tag for tags which grouped between optionalStart and optionalClose and will be skipped even if the tags which grouped got failed.]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+			
+		<xs:element name="OptionalClose" type='emptyTag'>
+			<xs:annotation>
+				<xs:documentation><![CDATA[Ending tag for tags which grouped between optionalStart and optionalClose and will be skipped even if the tags which grouped got failed.]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+		
+		</xs:choice>
+		<xs:attribute name="targetApplication" type="targetapplication" />
+	</xs:complexType>
+	<xs:element name="TestCase" type='TestCaseElements' />
+	</xs:schema>  

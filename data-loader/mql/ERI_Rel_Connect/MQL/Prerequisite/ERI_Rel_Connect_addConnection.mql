@@ -1,0 +1,2 @@
+connect bus "ERI_MarketOffering" "MO Object 006" "-" relationship "Product Line Models"  to "ERI_MarketOffering" "MO_FGC_0001" "-" "Attr2" "Val2 for 006";
+connect bus "ERI_MarketOffering" "MO Object 007" "-" relationship "Product Line Models"  to "Products" "MOV_KRC_0001" "-" "Attr2" "Val2 for 007";

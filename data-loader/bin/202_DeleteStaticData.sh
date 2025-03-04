@@ -1,0 +1,1 @@
+./00_MQLExecutor.sh delete Static
